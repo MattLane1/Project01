@@ -7,22 +7,38 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Project01
-{
-
-
-    public partial class Navbar
-    {
-
+namespace Project01 {
+    
+    
+    public partial class Navbar {
+        
         /// <summary>
-        /// home control.
+        /// newScore control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl home;
-
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl newScore;
+        
+        /// <summary>
+        /// scores control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl scores;
+        
+        /// <summary>
+        /// signUp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl signUp;
+        
         /// <summary>
         /// contact control.
         /// </summary>

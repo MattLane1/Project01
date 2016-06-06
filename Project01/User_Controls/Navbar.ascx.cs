@@ -6,9 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 /**
- * @author: Tom Tsiliopoulos
- * @date: May 26, 2016
- * @version: 0.0.1 - added SetActivePage method
+ * @author: Matthew Lane
+ * @date: June 6, 2016
+ * @version: 0.0.2 - Changes links to apply to project needs
  */
 
 namespace Project01
@@ -32,8 +32,14 @@ namespace Project01
         {
             switch (Page.Title)
             {
-                case "Home Page":
-                    home.Attributes.Add("class", "active");
+                case "Scores":
+                    scores.Attributes.Add("class", "active");
+                    break;
+                case "New Score":
+                    newScore.Attributes.Add("class", "active");
+                    break;
+                case "Sign Up":
+                    signUp.Attributes.Add("class", "active");
                     break;
                 case "Contact":
                     contact.Attributes.Add("class", "active");
