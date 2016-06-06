@@ -13,15 +13,6 @@ namespace Project01 {
     public partial class Navbar {
         
         /// <summary>
-        /// newScore control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl newScore;
-        
-        /// <summary>
         /// scores control.
         /// </summary>
         /// <remarks>
@@ -38,6 +29,15 @@ namespace Project01 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl signUp;
+        
+        /// <summary>
+        /// signIn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl signIn;
         
         /// <summary>
         /// contact control.

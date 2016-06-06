@@ -5,6 +5,12 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+/**
+ * @author: Matthew Lane
+ * @date: June 6, 2016
+ * @page: This is the contact page for the website
+ */
+
 namespace Project01
 {
     public partial class Contact : System.Web.UI.Page

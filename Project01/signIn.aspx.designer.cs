@@ -10,7 +10,7 @@
 namespace Project01 {
     
     
-    public partial class signUp {
+    public partial class signIn {
         
         /// <summary>
         /// UserNameTextBox control.

@@ -35,9 +35,6 @@ namespace Project01
                 case "Scores":
                     scores.Attributes.Add("class", "active");
                     break;
-                case "New Score":
-                    newScore.Attributes.Add("class", "active");
-                    break;
                 case "Sign Up":
                     signUp.Attributes.Add("class", "active");
                     break;
