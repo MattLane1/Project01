@@ -14,7 +14,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li id="scores" runat="server"><a href="Scores.aspx"><i class="fa fa-home fa-lg"></i> Score Reports</a></li>
+                <li id="default" runat="server"><a href="default.aspx"><i class="fa fa-home fa-lg"></i> Score Reports</a></li>
                 <li id="signUp" runat="server"><a href="SignUp.aspx"><i class="fa fa-home fa-lg"></i> Sign Up</a></li>
                  <li id="signIn" runat="server"><a href="SignIn.aspx"><i class="fa fa-home fa-lg"></i> Sign In</a></li>
                 <li id="contact" runat="server"><a href="Contact.aspx"><i class="fa fa-phone fa-lg"></i> Contact</a></li>

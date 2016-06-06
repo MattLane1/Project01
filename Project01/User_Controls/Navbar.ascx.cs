@@ -32,8 +32,8 @@ namespace Project01
         {
             switch (Page.Title)
             {
-                case "Scores":
-                    scores.Attributes.Add("class", "active");
+                case "default":
+                    @default.Attributes.Add("class", "active");
                     break;
                 case "Sign Up":
                     signUp.Attributes.Add("class", "active");

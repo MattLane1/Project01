@@ -71,7 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <Content Include="scores.aspx" />
+    <Content Include="default.aspx" />
     <Content Include="signIn.aspx" />
     <Content Include="signUp.aspx" />
     <Content Include="Site.Master" />
@@ -125,12 +125,12 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="scores.aspx.cs">
-      <DependentUpon>scores.aspx</DependentUpon>
+    <Compile Include="default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="scores.aspx.designer.cs">
-      <DependentUpon>scores.aspx</DependentUpon>
+    <Compile Include="default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
     </Compile>
     <Compile Include="signIn.aspx.cs">
       <DependentUpon>signIn.aspx</DependentUpon>
