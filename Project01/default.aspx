@@ -3,3 +3,4 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:GridView runat="server" ID="ScoresGridView"></asp:GridView>
 </asp:Content>
+ 
