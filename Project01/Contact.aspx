@@ -34,10 +34,9 @@
                     <asp:RequiredFieldValidator Display="Dynamic" CssClass="alert-danger" ID="RequiredFieldValidator5" runat="server" ErrorMessage="Your Message is required" ControlToValidate="MessageTextBox"></asp:RequiredFieldValidator>
                 </div>
                 <div class="text-right">
-                    <a class="btn btn-warning btn-lg" id="CancelButton" href="Default.aspx">Cancel</a>
+                    <a class="btn btn-default btn-lg" id="CancelButton" href="Default.aspx">Cancel</a>
                     <asp:Button runat="server" CssClass="btn btn-primary btn-lg" ID="SendButton" Text="Send" CausesValidation="true" OnClick="SendButton_Click" />
                 </div>
             </div>
         </div>
-    </div>
 </asp:Content>
