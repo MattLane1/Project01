@@ -10,15 +10,15 @@
 namespace Project01 {
     
     
-    public partial class scores {
+    public partial class Default {
         
         /// <summary>
-        /// ScoresGridView control.
+        /// GamesGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView ScoresGridView;
+        protected global::System.Web.UI.WebControls.GridView GamesGridView;
     }
 }
