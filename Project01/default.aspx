@@ -4,21 +4,23 @@
     <div class="container">
         <div class="row">
             <div class="col-md-offset-2 col-md-8"></div>
+            <h1>Games List</h1>
+            <a href="AddGame.aspx" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Add Game </a>
 
-            <asp:GridView runat="server" CssClass="table table-bordered table-striped table-hover" ID="GamesGridView" 
-                AutoGenerateColumns="true" DataKeyNames="TeamId" OnRowDeleting="GamesGridView_RowDeleting"  PageSize="3" 
-                OnPageIndexChanging="GamesGridView_PageIndexChanging"  
-                OnRowDataBound="GamesGridView_RowDataBound" >
+           <asp:GridView runat="server" CssClass="table table-bordered table-striped table-hover" ID="GamesGridView" OnRowDeleting="GamesGridView_RowDeleting" AutoGenerateColumns="false">
                 <Columns>
-                     <asp:BoundField DataField="TeamId" HeaderText="Game ID" Visible="true" SortExpression="GameId"/>
-                     <asp:BoundField DataField="SportName" HeaderText="Sport" Visible="true" SortExpression="SportName"/>
-                     <asp:BoundField DataField="TeamNameOne" HeaderText="Team One" Visible="true" SortExpression="TeamNameOne"/>
-                     <asp:BoundField DataField="PointsScoredTeamOne" HeaderText="Points Team One" Visible="true" SortExpression="PointsScoredTeamOne"/>
-                     <asp:BoundField DataField="PointsAllowedTeamOne" HeaderText="Points Allowed Team One" Visible="true" SortExpression="PointsAllowedTeamOne"/>
-                     <asp:BoundField DataField="TeamNameTwo" HeaderText="Team Two" Visible="true" SortExpression="TeamNameTwo"/>
-                     <asp:BoundField DataField="PointsScoredTeamTwo" HeaderText="Points Team Two" Visible="true" SortExpression="PointsScoredTeamTwo"/>
-                     <asp:BoundField DataField="PointsAllowedTeamTwo" HeaderText="Points Allowed Team Two" Visible="true" SortExpression="PointsAllowedTeamTwo"/>
-                     <asp:BoundField DataField="Spectators" HeaderText="Spectators" Visible="true" SortExpression="Spectators"/>
+                     <asp:BoundField runat="Server" DataField="GameId" HeaderText="Game ID" Visible="true"/>
+                     <asp:BoundField runat="Server" DataField="SportName" HeaderText="Sport" Visible="true" />
+                     <asp:BoundField runat="Server" DataField="TeamNameOne" HeaderText="Team One" Visible="true" />
+                     <asp:BoundField runat="Server" DataField="PointsScoredTeamOne" HeaderText="Points Team One" Visible="true" />
+                     <asp:BoundField runat="Server" DataField="PointsAllowedTeamOne" HeaderText="Points Allowed Team One" Visible="true" />
+                     <asp:BoundField runat="Server" DataField="TeamNameTwo" HeaderText="Team Two" Visible="true" />
+                     <asp:BoundField runat="Server" DataField="PointsScoredTeamTwo" HeaderText="Points Team Two" Visible="true" />
+                     <asp:BoundField runat="Server" DataField="PointsAllowedTeamTwo" HeaderText="Points Allowed Team Two" Visible="true" />
+                     <asp:BoundField runat="Server" DataField="Spectators" HeaderText="Spectators" Visible="true" />
+
+                     <asp:CommandField HeaderText="Delete" DeleteText="Delete" ShowDeleteButton ="true" ButtonType="Link"
+                        ControlStyle-CssClass="btn btn-danger btn-sm" />
                 </Columns>
             </asp:GridView>
         </div>

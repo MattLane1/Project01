@@ -13,10 +13,10 @@ namespace Project01.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entities : DbContext
+    public partial class Entities1 : DbContext
     {
-        public Entities()
-            : base("name=Entities")
+        public Entities1()
+            : base("name=Entities1")
         {
         }
     
@@ -25,13 +25,6 @@ namespace Project01.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Cours> Courses { get; set; }
-        public virtual DbSet<Department> Departments { get; set; }
-        public virtual DbSet<Enrollment> Enrollments { get; set; }
-        public virtual DbSet<GameScore> GameScores { get; set; }
         public virtual DbSet<SavedGameScore> SavedGameScores { get; set; }
-        public virtual DbSet<Student> Students { get; set; }
-        public virtual DbSet<Team> Teams { get; set; }
-        public virtual DbSet<Username> Usernames { get; set; }
     }
 }

@@ -18,10 +18,10 @@ namespace Project01.Models
         public string SportName { get; set; }
         public string TeamNameOne { get; set; }
         public string TeamNameTwo { get; set; }
-        public string Spectators { get; set; }
-        public string PointsScoredTeamOne { get; set; }
-        public string PointsScoredTeamTwo { get; set; }
-        public string PointsAllowedTeamOne { get; set; }
-        public string PointsAllowedTeamTwo { get; set; }
+        public int Spectators { get; set; }
+        public int PointsScoredTeamOne { get; set; }
+        public int PointsScoredTeamTwo { get; set; }
+        public int PointsAllowedTeamOne { get; set; }
+        public int PointsAllowedTeamTwo { get; set; }
     }
 }

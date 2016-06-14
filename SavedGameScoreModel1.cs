@@ -12,14 +12,16 @@ namespace Project01.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Enrollment
+    public partial class SavedGameScore
     {
-        public int EnrollmentID { get; set; }
-        public int CourseID { get; set; }
-        public int StudentID { get; set; }
-        public int Grade { get; set; }
-    
-        public virtual Cours Cours { get; set; }
-        public virtual Student Student { get; set; }
+        public int GameId { get; set; }
+        public string SportName { get; set; }
+        public string TeamNameOne { get; set; }
+        public string TeamNameTwo { get; set; }
+        public string Spectators { get; set; }
+        public string PointsScoredTeamOne { get; set; }
+        public string PointsScoredTeamTwo { get; set; }
+        public string PointsAllowedTeamOne { get; set; }
+        public string PointsAllowedTeamTwo { get; set; }
     }
 }

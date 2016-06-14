@@ -25,8 +25,6 @@ namespace Project01
             // if loading the page for the first time, populate the student grid
             if (!IsPostBack)
             {
-                Session["SortColumn"] = "GameId"; // default sort column
-                Session["SortDirection"] = "ASC";
                 // Get the game data
                 this.GetGames();
             }
@@ -43,16 +41,14 @@ namespace Project01
         protected void GetGames()
         {
             // connect to EF
-            using (Entities db = new Entities())
+            using (Entities1 db = new Entities1())
             {
-                string SortString = Session["SortColumn"].ToString() + " " + Session["SortDirection"].ToString();
-
                 // query the Students Table using EF and LINQ
                 var Games = (from allGames in db.SavedGameScores
                                 select allGames);
 
                 // bind the result to the GridView
-                GamesGridView.DataSource = Games.AsQueryable().OrderBy(SortString).ToList();
+                GamesGridView.DataSource = Games.ToList();
                 GamesGridView.DataBind();
             }
         }
@@ -74,18 +70,18 @@ namespace Project01
             int selectedRow = e.RowIndex;
 
             // get the selected StudentID using the Grid's DataKey collection
-            int StudentID = Convert.ToInt32(GamesGridView.DataKeys[selectedRow].Values["StudentID"]);
+            int GameID = 0;//Convert.ToInt32(GamesGridView.DataKeys[selectedRow].Values["GameId"]);
 
             // use EF to find the selected student in the DB and remove it
-            using (Entities db = new Entities())
+            using (Entities1 db = new Entities1())
             {
                 // create object of the Student class and store the query string inside of it
-                Student deletedStudent = (from studentRecords in db.Students
-                                          where studentRecords.StudentID == StudentID
-                                          select studentRecords).FirstOrDefault();
+                SavedGameScore deletedGame = (from savedGames in db.SavedGameScores
+                                          where savedGames.GameId == GameID
+                                          select savedGames).FirstOrDefault();
 
                 // remove the selected student from the db
-                db.Students.Remove(deletedStudent);
+                db.SavedGameScores.Remove(deletedGame);
 
                 // save my changes back to the database
                 db.SaveChanges();
@@ -134,34 +130,6 @@ namespace Project01
 
             // toggle the direction
             Session["SortDirection"] = Session["SortDirection"].ToString() == "ASC" ? "DESC" : "ASC";
-        }
-
-        protected void GamesGridView_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (IsPostBack)
-            {
-                if (e.Row.RowType == DataControlRowType.Header) // if header row has been clicked
-                {
-                    LinkButton linkbutton = new LinkButton();
-
-                    for (int index = 0; index < GamesGridView.Columns.Count - 1; index++)
-                    {
-                        if (GamesGridView.Columns[index].SortExpression == Session["SortColumn"].ToString())
-                        {
-                            if (Session["SortDirection"].ToString() == "ASC")
-                            {
-                                linkbutton.Text = " <i class='fa fa-caret-up fa-lg'></i>";
-                            }
-                            else
-                            {
-                                linkbutton.Text = " <i class='fa fa-caret-down fa-lg'></i>";
-                            }
-
-                            e.Row.Cells[index].Controls.Add(linkbutton);
-                        }
-                    }
-                }
-            }
         }
     }
 }

@@ -171,18 +171,6 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Cours.cs">
-      <DependentUpon>GamesModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Department.cs">
-      <DependentUpon>GamesModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Enrollment.cs">
-      <DependentUpon>GamesModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\GameScore.cs">
-      <DependentUpon>GamesModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\GamesModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -199,15 +187,6 @@
       <DependentUpon>GamesModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\SavedGameScore.cs">
-      <DependentUpon>GamesModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Student.cs">
-      <DependentUpon>GamesModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Team.cs">
-      <DependentUpon>GamesModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Username.cs">
       <DependentUpon>GamesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="signIn.aspx.cs">
