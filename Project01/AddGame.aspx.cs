@@ -100,6 +100,12 @@ namespace Project01
                 newGame.PointsAllowedTeamOne = Convert.ToInt32(TeamTwoScoreTextBox.Text);
                 newGame.PointsAllowedTeamTwo = Convert.ToInt32(TeamOneScoreTextBox.Text);
 
+                //Check which team had the higher score, and save it as the winner
+                if (newGame.PointsScoredTeamOne > newGame.PointsScoredTeamTwo)
+                    newGame.TeamWon = newGame.TeamNameOne;
+                else
+                    newGame.TeamWon = newGame.TeamNameTwo;
+
                 // use LINQ to ADO.NET to add / insert new student into the database
                 if (GameId == 0)
                 {

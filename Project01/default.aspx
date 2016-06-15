@@ -30,6 +30,7 @@
                     <asp:BoundField runat="Server" DataField="TeamNameTwo" HeaderText="Team Two" Visible="true" />
                     <asp:BoundField runat="Server" DataField="PointsScoredTeamTwo" HeaderText="Points Team Two" Visible="true" />
                     <asp:BoundField runat="Server" DataField="PointsAllowedTeamTwo" HeaderText="Points Allowed Team Two" Visible="true" />
+                    <asp:BoundField runat="Server" DataField="TeamWon" HeaderText="Team Won" Visible="true" />
                     <asp:BoundField runat="Server" DataField="Spectators" HeaderText="Spectators" Visible="true" />
 
                     <asp:CommandField HeaderText="Delete" DeleteText="Delete" ShowDeleteButton="true" ButtonType="Link"

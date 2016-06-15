@@ -23,5 +23,6 @@ namespace Project01.Models
         public int PointsAllowedTeamOne { get; set; }
         public int PointsAllowedTeamTwo { get; set; }
         public int Spectators { get; set; }
+        public string TeamWon { get; set; }
     }
 }
