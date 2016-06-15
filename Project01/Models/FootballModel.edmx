@@ -5,63 +5,63 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="SavedGameScore">
+        <EntityType Name="Football Scores">
           <Key>
-            <PropertyRef Name="GameId" />
+            <PropertyRef Name="GameID" />
           </Key>
-          <Property Name="GameId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="SportName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GameID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GameDate" Type="date" Nullable="false" />
           <Property Name="TeamNameOne" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="TeamNameTwo" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Spectators" Type="int" Nullable="false" />
           <Property Name="PointsScoredTeamOne" Type="int" Nullable="false" />
           <Property Name="PointsScoredTeamTwo" Type="int" Nullable="false" />
           <Property Name="PointsAllowedTeamOne" Type="int" Nullable="false" />
           <Property Name="PointsAllowedTeamTwo" Type="int" Nullable="false" />
+          <Property Name="Spectators" Type="int" Nullable="false" />
         </EntityType>
         <EntityContainer Name="ModelStoreContainer">
-          <EntitySet Name="SavedGameScore" EntityType="Self.SavedGameScore" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Football Scores" EntityType="Self.Football Scores" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="SavedGameScore">
+        <EntityType Name="Football_Score">
           <Key>
-            <PropertyRef Name="GameId" />
+            <PropertyRef Name="GameID" />
           </Key>
-          <Property Name="GameId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SportName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GameID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GameDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="TeamNameOne" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TeamNameTwo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Spectators" Type="Int32" Nullable="false" />
           <Property Name="PointsScoredTeamOne" Type="Int32" Nullable="false" />
           <Property Name="PointsScoredTeamTwo" Type="Int32" Nullable="false" />
           <Property Name="PointsAllowedTeamOne" Type="Int32" Nullable="false" />
           <Property Name="PointsAllowedTeamTwo" Type="Int32" Nullable="false" />
+          <Property Name="Spectators" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="SavedGameScores" EntityType="Self.SavedGameScore" />
+        <EntityContainer Name="FootballScoreModel" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Football_Scores" EntityType="Self.Football_Score" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities1">
-          <EntitySetMapping Name="SavedGameScores">
-            <EntityTypeMapping TypeName="Model.SavedGameScore">
-              <MappingFragment StoreEntitySet="SavedGameScore">
-                <ScalarProperty Name="GameId" ColumnName="GameId" />
-                <ScalarProperty Name="SportName" ColumnName="SportName" />
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="FootballScoreModel">
+          <EntitySetMapping Name="Football_Scores">
+            <EntityTypeMapping TypeName="Model.Football_Score">
+              <MappingFragment StoreEntitySet="Football Scores">
+                <ScalarProperty Name="GameID" ColumnName="GameID" />
+                <ScalarProperty Name="GameDate" ColumnName="GameDate" />
                 <ScalarProperty Name="TeamNameOne" ColumnName="TeamNameOne" />
                 <ScalarProperty Name="TeamNameTwo" ColumnName="TeamNameTwo" />
-                <ScalarProperty Name="Spectators" ColumnName="Spectators" />
                 <ScalarProperty Name="PointsScoredTeamOne" ColumnName="PointsScoredTeamOne" />
                 <ScalarProperty Name="PointsScoredTeamTwo" ColumnName="PointsScoredTeamTwo" />
                 <ScalarProperty Name="PointsAllowedTeamOne" ColumnName="PointsAllowedTeamOne" />
                 <ScalarProperty Name="PointsAllowedTeamTwo" ColumnName="PointsAllowedTeamTwo" />
+                <ScalarProperty Name="Spectators" ColumnName="Spectators" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

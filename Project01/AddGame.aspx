@@ -10,8 +10,8 @@
 
 
                 <div class="form-group">
-                    <label class="control-label" for="SportNameTextBox">Sport Name</label>
-                    <asp:TextBox  runat="server" CssClass="form-control" ID="SportNameTextBox" placeholder="Sport Name" required="true"></asp:TextBox>
+                    <label class="control-label" for="GameDateTextBox">Game Date</label>
+                    <asp:TextBox  runat="server" CssClass="form-control" ID="GameDateTextBox" placeholder="Game Date" required="true"></asp:TextBox>
                  </div>
 
                  <div class="form-group">

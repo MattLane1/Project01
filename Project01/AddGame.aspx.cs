@@ -30,27 +30,27 @@ namespace Project01
         protected void SaveButton_Click(object sender, EventArgs e)
         {
             // Use EF to connect to the server
-            using (Entities1 db = new Entities1())
+            using (FootballScoreModel db = new FootballScoreModel())
             {
                 // use the Student model to create a new student object and
                 // save a new record
-                SavedGameScore newGame = new SavedGameScore();
+                Football_Score newGame = new Football_Score();
 
-                int GameID = 0;
+                int GameId = 0;
 
                 if (Request.QueryString.Count > 0) // our URL has a DepartmentID in it
                 {
                     // get the id from the URL
-                    GameID = Convert.ToInt32(Request.QueryString["GameId"]);
+                    GameId = Convert.ToInt32(Request.QueryString["GameId"]);
 
                     // get the current student from EF DB
-                    newGame = (from GameScore in db.SavedGameScores
-                               where GameScore.GameId == GameID
+                    newGame = (from GameScore in db.Football_Scores
+                               where GameScore.GameID == GameId
                                select GameScore).FirstOrDefault();
                 }
 
                 // add form data to the new student record
-                newGame.SportName = SportNameTextBox.Text;
+                newGame.GameDate = Convert.ToDateTime(GameDateTextBox.Text);
                 newGame.Spectators = Convert.ToInt32(SpectatorsTextBox.Text);
 
                 newGame.TeamNameOne = TeamOneNameTextBox.Text;
@@ -63,9 +63,9 @@ namespace Project01
                 newGame.PointsAllowedTeamTwo = Convert.ToInt32(TeamOneScoreTextBox.Text);
 
                 // use LINQ to ADO.NET to add / insert new student into the database
-                if (GameID == 0)
+                if (GameId == 0)
                 {
-                    db.SavedGameScores.Add(newGame);
+                    db.Football_Scores.Add(newGame);
                 }
 
                 // save our changes - also updates and inserts
@@ -79,14 +79,14 @@ namespace Project01
         protected void GetGames()
         {
             // populate the form with existing data from the database
-            int GameID = Convert.ToInt32(Request.QueryString["GameId"]);
+            int GameId = Convert.ToInt32(Request.QueryString["GameId"]);
 
             // connect to the EF DB
-            using (Entities1 db = new Entities1())
+            using (FootballScoreModel db = new FootballScoreModel())
             {
                 // populate a student object instance with the StudentID from the URL Parameter
-                SavedGameScore updatedGameScore = (from GameScore in db.SavedGameScores
-                                                where GameScore.GameId == GameID
+                Football_Score updatedGameScore = (from GameScore in db.Football_Scores
+                                                where GameScore.GameID == GameId
                                                 select GameScore).FirstOrDefault();
 
                 // map the student properties to the form controls
@@ -98,7 +98,7 @@ namespace Project01
                     TeamOneScoreTextBox.Text = updatedGameScore.PointsScoredTeamOne.ToString();
                     TeamTwoScoreTextBox.Text = updatedGameScore.PointsScoredTeamTwo.ToString();
 
-                    SportNameTextBox.Text = updatedGameScore.SportName;
+                    //SportNameTextBox.Text = Convert.ToDateTime(updatedGameScore.GameDate);
                     SpectatorsTextBox.Text = updatedGameScore.Spectators.ToString();
                 }
             }

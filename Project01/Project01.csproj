@@ -85,15 +85,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AddGame.aspx" />
-    <Content Include="Models\GamesModel.Context.tt">
+    <Content Include="Models\FootballModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>GamesModel.edmx</DependentUpon>
-      <LastGenOutput>GamesModel.Context.cs</LastGenOutput>
+      <DependentUpon>FootballModel.edmx</DependentUpon>
+      <LastGenOutput>FootballModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\GamesModel.tt">
+    <Content Include="Models\FootballModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>GamesModel.edmx</DependentUpon>
-      <LastGenOutput>GamesModel.cs</LastGenOutput>
+      <DependentUpon>FootballModel.edmx</DependentUpon>
+      <LastGenOutput>FootballModel.cs</LastGenOutput>
     </Content>
     <Content Include="packages.config" />
     <Content Include="Default.aspx" />
@@ -101,12 +101,12 @@
     <Content Include="signUp.aspx" />
     <Content Include="Site.Master" />
     <Content Include="Scripts\jquery-2.2.3.min.map" />
-    <EntityDeploy Include="Models\GamesModel.edmx">
+    <EntityDeploy Include="Models\FootballModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>GamesModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>FootballModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\GamesModel.edmx.diagram">
-      <DependentUpon>GamesModel.edmx</DependentUpon>
+    <Content Include="Models\FootballModel.edmx.diagram">
+      <DependentUpon>FootballModel.edmx</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -171,23 +171,23 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Models\GamesModel.Context.cs">
+    <Compile Include="Models\FootballModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GamesModel.Context.tt</DependentUpon>
+      <DependentUpon>FootballModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\GamesModel.cs">
+    <Compile Include="Models\FootballModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GamesModel.tt</DependentUpon>
+      <DependentUpon>FootballModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\GamesModel.Designer.cs">
+    <Compile Include="Models\FootballModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GamesModel.edmx</DependentUpon>
+      <DependentUpon>FootballModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\SavedGameScore.cs">
-      <DependentUpon>GamesModel.tt</DependentUpon>
+    <Compile Include="Models\Football_Score.cs">
+      <DependentUpon>FootballModel.tt</DependentUpon>
     </Compile>
     <Compile Include="signIn.aspx.cs">
       <DependentUpon>signIn.aspx</DependentUpon>

@@ -12,16 +12,16 @@ namespace Project01.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class SavedGameScore
+    public partial class Football_Score
     {
-        public int GameId { get; set; }
-        public string SportName { get; set; }
+        public int GameID { get; set; }
+        public System.DateTime GameDate { get; set; }
         public string TeamNameOne { get; set; }
         public string TeamNameTwo { get; set; }
-        public int Spectators { get; set; }
         public int PointsScoredTeamOne { get; set; }
         public int PointsScoredTeamTwo { get; set; }
         public int PointsAllowedTeamOne { get; set; }
         public int PointsAllowedTeamTwo { get; set; }
+        public int Spectators { get; set; }
     }
 }

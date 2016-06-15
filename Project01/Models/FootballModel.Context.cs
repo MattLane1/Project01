@@ -13,10 +13,10 @@ namespace Project01.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entities1 : DbContext
+    public partial class FootballScoreModel : DbContext
     {
-        public Entities1()
-            : base("name=Entities1")
+        public FootballScoreModel()
+            : base("name=FootballScoreModel")
         {
         }
     
@@ -25,6 +25,6 @@ namespace Project01.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<SavedGameScore> SavedGameScores { get; set; }
+        public virtual DbSet<Football_Score> Football_Scores { get; set; }
     }
 }

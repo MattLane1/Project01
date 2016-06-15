@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\mattl\Documents\Visual Studio 2015\Projects\Project01\Project01\Models\GamesModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\mattl\Documents\Visual Studio 2015\Projects\Project01\Project01\Models\FootballModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

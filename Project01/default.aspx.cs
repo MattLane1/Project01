@@ -41,10 +41,10 @@ namespace Project01
         protected void GetGames()
         {
             // connect to EF
-            using (Entities1 db = new Entities1())
+            using (FootballScoreModel db = new FootballScoreModel())
             {
                 // query the Students Table using EF and LINQ
-                var Games = (from allGames in db.SavedGameScores
+                var Games = (from allGames in db.Football_Scores
                                 select allGames);
 
                 // bind the result to the GridView
@@ -70,18 +70,18 @@ namespace Project01
             int selectedRow = e.RowIndex;
 
             // get the selected StudentID using the Grid's DataKey collection
-            int GameID = 0;//Convert.ToInt32(GamesGridView.DataKeys[selectedRow].Values["GameId"]);
+            int GameID = Convert.ToInt32(GamesGridView.DataKeys[selectedRow].Values["GameID"]);
 
             // use EF to find the selected student in the DB and remove it
-            using (Entities1 db = new Entities1())
+            using (FootballScoreModel db = new FootballScoreModel())
             {
                 // create object of the Student class and store the query string inside of it
-                SavedGameScore deletedGame = (from savedGames in db.SavedGameScores
-                                          where savedGames.GameId == GameID
+                Football_Score deletedGame = (from savedGames in db.Football_Scores
+                                              where savedGames.GameID == GameID
                                           select savedGames).FirstOrDefault();
 
                 // remove the selected student from the db
-                db.SavedGameScores.Remove(deletedGame);
+                db.Football_Scores.Remove(deletedGame);
 
                 // save my changes back to the database
                 db.SaveChanges();
@@ -114,7 +114,7 @@ namespace Project01
         protected void PageSizeDropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Set the new Page size
-          ///  GamesGridView.PageSize = Convert.ToInt32(PageSizeDropDownList.SelectedValue);
+           /// GamesGridView.PageSize = Convert.ToInt32(PageSizeDropDownList.SelectedValue);
 
             // refresh the grid
             this.GetGames();

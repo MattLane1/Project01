@@ -13,6 +13,15 @@ namespace Project01 {
     public partial class Default {
         
         /// <summary>
+        /// PageSizeDropDownList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList PageSizeDropDownList;
+        
+        /// <summary>
         /// GamesGridView control.
         /// </summary>
         /// <remarks>
