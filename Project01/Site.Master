@@ -25,7 +25,7 @@
         </div>
         <footer class="footer navbar navbar-fixed-bottom bg-info">
             <div class="container">
-                <p class ="text-muted">&copy; Matthew Lane</p>
+                <p class="text-muted">&copy; Matthew Lane</p>
             </div>
         </footer>
     </form>

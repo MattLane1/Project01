@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-offset-2 col-md-6 text-center">
-                  <h2>Please Sign-up below with a username and password</h2>
+                <h2>Please Sign-up below with a username and password</h2>
             </div>
         </div>
         <br />

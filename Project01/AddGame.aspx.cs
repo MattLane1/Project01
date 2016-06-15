@@ -1,4 +1,5 @@
-﻿using System;
+﻿//Using statements
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,36 +10,73 @@ using System.Web.UI.WebControls;
 using Project01.Models;
 using System.Web.ModelBinding;
 
+/**
+ * @author: Matthew Lane
+ * @date: June 14, 2016
+ * @page: This page allows a user to add a new game to the database
+ * @version: 1.0 - Connected page to database, it is populating correctly. 
+ */
+
 namespace Project01
 {
     public partial class AddGame : System.Web.UI.Page
     {
+        /**
+          * <summary>
+          * This method is called when the page is displayed, if it is the first time it populates the grids
+          * </summary>
+          * 
+          * @method Page_Load
+          * @param {object} sender
+          * @param {GridViewPageEventArgs} e
+          * @returns {void}
+         */
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Check to see if this is the first time the page has been loaded, if so, populate the grid
             if ((!IsPostBack) && (Request.QueryString.Count > 0))
             {
                 this.GetGames();
             }
         }
 
+        /**
+          * <summary>
+          * This method is called when the cancel button is pressed. It returns the user to the viewing page
+          * </summary>
+          * 
+          * @method CancelButton_Click
+          * @param {object} sender
+          * @param {GridViewPageEventArgs} e
+          * @returns {void}
+         */
         protected void CancelButton_Click(object sender, EventArgs e)
         {
             //Redirect back to Students page
             Response.Redirect("Default.aspx");
         }
 
+      /**
+       * <summary>
+       * This method is called when the save button is pressed. It saves the provided game information to the database
+       * </summary>
+       * 
+       * @method SaveButton_Click
+       * @param {object} sender
+       * @param {GridViewPageEventArgs} e
+       * @returns {void}
+      */
         protected void SaveButton_Click(object sender, EventArgs e)
         {
             // Use EF to connect to the server
             using (FootballScoreModel db = new FootballScoreModel())
             {
-                // use the Student model to create a new student object and
-                // save a new record
+                // use the Student model to create a new student object and save a new record
                 Football_Score newGame = new Football_Score();
 
                 int GameId = 0;
 
-                if (Request.QueryString.Count > 0) // our URL has a DepartmentID in it
+                if (Request.QueryString.Count > 0) // our URL has this GameID in it (edit mode)
                 {
                     // get the id from the URL
                     GameId = Convert.ToInt32(Request.QueryString["GameId"]);
@@ -76,6 +114,14 @@ namespace Project01
             }
         }
 
+        /**
+         * <summary>
+         * This method gets the information about the games from the database, and checks to see if the game already exists
+         * </summary>
+         * 
+         * @method GetGames
+         * @returns {void}
+        */
         protected void GetGames()
         {
             // populate the form with existing data from the database
@@ -98,14 +144,9 @@ namespace Project01
                     TeamOneScoreTextBox.Text = updatedGameScore.PointsScoredTeamOne.ToString();
                     TeamTwoScoreTextBox.Text = updatedGameScore.PointsScoredTeamTwo.ToString();
 
-                    //SportNameTextBox.Text = Convert.ToDateTime(updatedGameScore.GameDate);
                     SpectatorsTextBox.Text = updatedGameScore.Spectators.ToString();
                 }
             }
         }
-
- 
-
- 
     }
 }
