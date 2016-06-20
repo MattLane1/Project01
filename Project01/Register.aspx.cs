@@ -21,7 +21,7 @@ namespace Project01
 
         protected void CancelButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Default.aspx");
+            Response.Redirect("~/Default.aspx");
         }
 
         protected void RegisterButton_Click(object sender, EventArgs e)
@@ -52,7 +52,7 @@ namespace Project01
                 authenticationManager.SignIn(new AuthenticationProperties() { }, userIdentity);
 
                 // Redirect to the MainMenu
-                Response.Redirect("Default.aspx");
+                Response.Redirect("~/Default.aspx");
             }
             else
             {

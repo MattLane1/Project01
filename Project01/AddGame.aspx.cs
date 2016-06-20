@@ -53,7 +53,7 @@ namespace Project01
         protected void CancelButton_Click(object sender, EventArgs e)
         {
             //Redirect back to Students page
-            Response.Redirect("Default.aspx");
+            Response.Redirect("~/Default.aspx");
         }
 
       /**
@@ -116,7 +116,7 @@ namespace Project01
                 db.SaveChanges();
 
                 // Redirect back to the updated students page
-                Response.Redirect("Default.aspx");
+                Response.Redirect("~/Default.aspx");
             }
         }
 
