@@ -15,7 +15,7 @@
 
             <h1>Login Page</h1>
 
-            <div class="panel panel-primary">
+            <div class="panel panel-content">
 
                 <div class="panel-heading">
 
