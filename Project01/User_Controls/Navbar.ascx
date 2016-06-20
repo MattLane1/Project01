@@ -15,8 +15,9 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li id="default" runat="server"><a href="default.aspx"><i class="fa fa-home fa-lg"></i> Score Reports</a></li>
-                <li id="signUp" runat="server"><a href="Register.aspx"><i class="fa fa-home fa-lg"></i> Sign Up</a></li>
-                <li id="signIn" runat="server"><a href="Login.aspx"><i class="fa fa-home fa-lg"></i> Sign In</a></li>
+                <li id="Register" runat="server"><a href="Register.aspx"><i class="fa fa-user-plus fa-lg"></i> Sign Up</a></li>
+                <li id="Login" runat="server"><a href="Login.aspx"><i class="fa fa-user fa-lg"></i> Sign In</a></li>
+                <li id="Logout" runat="server"><a href="Logout.aspx"><i class="fa fa-user-times fa-lg"></i> Sign Out</a></li>
                 <li id="contact" runat="server"><a href="Contact.aspx"><i class="fa fa-phone fa-lg"></i> Contact</a></li>
             </ul>
         </div>
