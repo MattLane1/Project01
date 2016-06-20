@@ -14,10 +14,17 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li id="default" runat="server"><a href="default.aspx"><i class="fa fa-home fa-lg"></i> Score Reports</a></li>
-                <li id="Register" runat="server"><a href="Register.aspx"><i class="fa fa-user-plus fa-lg"></i> Sign Up</a></li>
-                <li id="Login" runat="server"><a href="Login.aspx"><i class="fa fa-user fa-lg"></i> Sign In</a></li>
+                <li id="default" runat="server"><a href="default.aspx"><i class="fa fa-home fa-lg"></i> Score Reports</a></li>  
+
+                <asp:PlaceHolder ID="PublicPlaceHolder" runat="server">
+                 <li id="Register" runat="server"><a href="Register.aspx"><i class="fa fa-user-plus fa-lg"></i> Sign Up</a></li>
+                 <li id="Login" runat="server"><a href="Login.aspx"><i class="fa fa-user fa-lg"></i> Sign In</a></li>
+                </asp:Placeholder>
+
+                <asp:PlaceHolder ID="PrivatePlaceHolder" runat="server">
                 <li id="Logout" runat="server"><a href="Logout.aspx"><i class="fa fa-user-times fa-lg"></i> Sign Out</a></li>
+                </asp:PlaceHolder>
+
                 <li id="contact" runat="server"><a href="Contact.aspx"><i class="fa fa-phone fa-lg"></i> Contact</a></li>
             </ul>
         </div>

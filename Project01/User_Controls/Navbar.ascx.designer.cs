@@ -22,6 +22,15 @@ namespace Project01 {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl @default;
         
         /// <summary>
+        /// PublicPlaceHolder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder PublicPlaceHolder;
+        
+        /// <summary>
         /// Register control.
         /// </summary>
         /// <remarks>
@@ -38,6 +47,15 @@ namespace Project01 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Login;
+        
+        /// <summary>
+        /// PrivatePlaceHolder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder PrivatePlaceHolder;
         
         /// <summary>
         /// Logout control.
