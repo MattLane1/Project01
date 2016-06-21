@@ -56,7 +56,7 @@ namespace Project01.User
         protected void CancelButton_Click(object sender, EventArgs e)
         {
             //Reidrect to user page
-            Response.Redirect("~/Users.aspx");
+            Response.Redirect("~/User/Users.aspx");
         }
 
         protected void SaveButton_Click(object sender, EventArgs e)
@@ -82,7 +82,7 @@ namespace Project01.User
                     db.SaveChanges();
 
                     //redirect to users list
-                    Response.Redirect("~/Users.aspx");
+                    Response.Redirect("~/User/Users.aspx");
                 }
 
             }
@@ -107,7 +107,7 @@ namespace Project01.User
 
                 if(result.Succeeded)
                 {
-                    Response.Redirect("~/Users.aspx");
+                    Response.Redirect("~/User/Users.aspx");
                 }
                 else
                 {

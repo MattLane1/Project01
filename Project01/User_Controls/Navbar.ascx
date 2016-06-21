@@ -25,6 +25,10 @@
                 <li id="Logout" runat="server"><a href="/Logout.aspx"><i class="fa fa-user-times fa-lg"></i> Sign Out</a></li>
                 </asp:PlaceHolder>
 
+                <asp:PlaceHolder ID="AdminPlaceHolder" runat="server">
+                <li id="Li1" runat="server"><a href="/User/Users.aspx"><i class="fa fa-group fa-lg"></i> Registered Users </a></li>
+                </asp:PlaceHolder>
+
                 <li id="contact" runat="server"><a href="/Contact.aspx"><i class="fa fa-phone fa-lg"></i> Contact</a></li>
             </ul>
         </div>

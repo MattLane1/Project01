@@ -24,18 +24,30 @@ namespace Project01
         {
             if (!IsPostBack)
             {
+                //Check if the Admin is logged in
+                if (HttpContext.Current.User.Identity.Name.ToString() == "Admin")
+                {
+                    AdminPlaceHolder.Visible = true;
+                    PrivatePlaceHolder.Visible = true;
+                    PublicPlaceHolder.Visible = false;
+                }
+                
                 //Check if a user is logged in
-                if(HttpContext.Current.User.Identity.IsAuthenticated)
+                else if (HttpContext.Current.User.Identity.IsAuthenticated)
                 {
                     //Show the private content
                     PrivatePlaceHolder.Visible = true;
                     PublicPlaceHolder.Visible = false;
+                    AdminPlaceHolder.Visible = false;
                 }
+
+                //Default, noone is logged in
                 else
                 {
                     //Show the public content
                     PrivatePlaceHolder.Visible = false;
                     PublicPlaceHolder.Visible = true;
+                    AdminPlaceHolder.Visible = false;
                 }
                 SetActivePage();
             }
