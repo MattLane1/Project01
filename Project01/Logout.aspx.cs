@@ -24,7 +24,7 @@ namespace Project01
             authenticationManager.SignOut();
 
             //Redirect to default page
-            Response.Redirect("Login.aspx");
+            Response.Redirect("~/Login.aspx");
         }
     }
 }

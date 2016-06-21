@@ -13,10 +13,10 @@ namespace Project01.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class FootballScoreModel : DbContext
+    public partial class Football_Model : DbContext
     {
-        public FootballScoreModel()
-            : base("name=FootballScoreModel")
+        public Football_Model()
+            : base("name=Football_Model")
         {
         }
     

@@ -17,12 +17,13 @@
                 <li id="default" runat="server"><a href="/default.aspx"><i class="fa fa-home fa-lg"></i> Score Reports</a></li>  
 
                 <asp:PlaceHolder ID="PublicPlaceHolder" runat="server">
-                 <li id="Register" runat="server"><a href="Register.aspx"><i class="fa fa-user-plus fa-lg"></i> Sign Up</a></li>
+                 <li id="Register" runat="server"><a href="/Register.aspx"><i class="fa fa-user-plus fa-lg"></i> Sign Up</a></li>
                  <li id="Login" runat="server"><a href="/Login.aspx"><i class="fa fa-user fa-lg"></i> Sign In</a></li>
                 </asp:Placeholder>
 
                 <asp:PlaceHolder ID="PrivatePlaceHolder" runat="server">
                 <li id="Logout" runat="server"><a href="/Logout.aspx"><i class="fa fa-user-times fa-lg"></i> Sign Out</a></li>
+                <li id="EditUserDetails" runat="server"><a href="/User/UserDetails.aspx"><i class="fa fa-file-text fa-lg"></i> Edit Account </a></li>
                 </asp:PlaceHolder>
 
                 <asp:PlaceHolder ID="AdminPlaceHolder" runat="server">

@@ -29,7 +29,25 @@ namespace Project01.User
                 }
                 else
                 {
-                    PasswordPlaceHolder.Visible = true;
+                
+                    //Store session info and authentication methods in the authentiationManager object
+                    var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+                  
+                    using (UserConnection db = new UserConnection())
+                    {
+                        AspNetUser updatedUser = (from user in db.AspNetUsers
+                                                  where user.UserName == authenticationManager.User.Identity.Name
+                                                  select user).FirstOrDefault();
+
+                        if (updatedUser != null)
+                        {
+                            UserNameTextBox.Text = updatedUser.UserName;
+                            PhoneNumberTextBox.Text = updatedUser.PhoneNumber;
+                            EmailTextBox.Text = updatedUser.Email;
+                        }
+                    }
+
+                    PasswordPlaceHolder.Visible = false;
                 }
             }
         }
@@ -62,14 +80,18 @@ namespace Project01.User
         protected void SaveButton_Click(object sender, EventArgs e)
         {
             string UserID = "";
+            
+            //Store session info and authentication methods in the authentiationManager object
+            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
 
-            if(Request.QueryString.Count > 0)
-            {
+          //  if (Request.QueryString.Count > 0)
+          //  {
                 using (UserConnection db = new UserConnection())
                 {
                     AspNetUser newUser = new AspNetUser();
 
-                    UserID = Request.QueryString["Id"].ToString();
+                //  UserID = Request.QueryString["Id"].ToString();
+                UserID = authenticationManager.User.Identity.GetUserId();
 
                     newUser = (from users in db.AspNetUsers
                                where users.Id == UserID
@@ -82,10 +104,14 @@ namespace Project01.User
                     db.SaveChanges();
 
                     //redirect to users list
-                    Response.Redirect("~/User/Users.aspx");
+                    if (newUser.UserName == "Admin")
+                        Response.Redirect("~/User/Users.aspx");
+
+                    else
+                        Response.Redirect("~/Default.aspx");
                 }
 
-            }
+           // }
 
             //If creating a new user
             if (UserID == "")
@@ -107,7 +133,12 @@ namespace Project01.User
 
                 if(result.Succeeded)
                 {
-                    Response.Redirect("~/User/Users.aspx");
+                    //redirect to users list
+                    if (user.UserName == "Admin")
+                        Response.Redirect("~/User/Users.aspx");
+
+                    else
+                        Response.Redirect("~/Default.aspx");
                 }
                 else
                 {

@@ -8,11 +8,23 @@
                 <h5>All fields are required</h5>
                 <br />
 
-
-                <div class="form-group">
-                    <label class="control-label" for="GameDateTextBox">Game Date</label>
-                    <asp:TextBox runat="server" CssClass="form-control" ID="GameDateTextBox" placeholder="Game Date" required="true"></asp:TextBox>
-                </div>
+            <div>
+                <label for="GameWeekDropDownList">Week To Display </label>
+                <asp:DropDownList ID="GameWeekDropDownList" runat="server"
+                    AutoPostBack="true" CssClass="btn btn-default bt-sm dropdown-toggle"
+                    OnSelectedIndexChanged="GameWeekDropDownList_SelectedIndexChanged">
+                    <asp:ListItem Text="Week 1" Value="1" />
+                    <asp:ListItem Text="Week 2" Value="2" />
+                    <asp:ListItem Text="Week 3" Value="3" />
+                    <asp:ListItem Text="Week 4" Value="4" />
+                    <asp:ListItem Text="Week 5" Value="5" />
+                    <asp:ListItem Text="Week 6" Value="6" />
+                    <asp:ListItem Text="Week 7" Value="7" />
+                    <asp:ListItem Text="Week 8" Value="8" />
+                    <asp:ListItem Text="Week 9" Value="9" />
+                    <asp:ListItem Text="Week 10" Value="10" />
+                </asp:DropDownList>
+            </div>
 
                 <div class="form-group">
                     <label class="control-label" for="TeamOneNameTextBox">Team One Name</label>

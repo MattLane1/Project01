@@ -4,13 +4,13 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Football Scores">
           <Key>
             <PropertyRef Name="GameID" />
           </Key>
           <Property Name="GameID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="GameDate" Type="date" Nullable="false" />
+          <Property Name="GameWeek" Type="int" Nullable="false" />
           <Property Name="TeamNameOne" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="TeamNameTwo" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="PointsScoredTeamOne" Type="int" Nullable="false" />
@@ -23,7 +23,8 @@
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="Football Scores" EntityType="Self.Football Scores" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -32,7 +33,7 @@
             <PropertyRef Name="GameID" />
           </Key>
           <Property Name="GameID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="GameDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="GameWeek" Type="Int32" Nullable="false" />
           <Property Name="TeamNameOne" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TeamNameTwo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PointsScoredTeamOne" Type="Int32" Nullable="false" />
@@ -42,7 +43,7 @@
           <Property Name="Spectators" Type="Int32" Nullable="false" />
           <Property Name="TeamWon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="FootballScoreModel" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Football_Model" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Football_Scores" EntityType="Self.Football_Score" />
         </EntityContainer>
       </Schema>
@@ -50,13 +51,12 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="FootballScoreModel">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Football_Model">
           <EntitySetMapping Name="Football_Scores">
             <EntityTypeMapping TypeName="Model.Football_Score">
               <MappingFragment StoreEntitySet="Football Scores">
-                <ScalarProperty Name="TeamWon" ColumnName="TeamWon" />
                 <ScalarProperty Name="GameID" ColumnName="GameID" />
-                <ScalarProperty Name="GameDate" ColumnName="GameDate" />
+                <ScalarProperty Name="GameWeek" ColumnName="GameWeek" />
                 <ScalarProperty Name="TeamNameOne" ColumnName="TeamNameOne" />
                 <ScalarProperty Name="TeamNameTwo" ColumnName="TeamNameTwo" />
                 <ScalarProperty Name="PointsScoredTeamOne" ColumnName="PointsScoredTeamOne" />
@@ -64,6 +64,7 @@
                 <ScalarProperty Name="PointsAllowedTeamOne" ColumnName="PointsAllowedTeamOne" />
                 <ScalarProperty Name="PointsAllowedTeamTwo" ColumnName="PointsAllowedTeamTwo" />
                 <ScalarProperty Name="Spectators" ColumnName="Spectators" />
+                <ScalarProperty Name="TeamWon" ColumnName="TeamWon" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

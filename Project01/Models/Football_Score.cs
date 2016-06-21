@@ -15,7 +15,7 @@ namespace Project01.Models
     public partial class Football_Score
     {
         public int GameID { get; set; }
-        public System.DateTime GameDate { get; set; }
+        public int GameWeek { get; set; }
         public string TeamNameOne { get; set; }
         public string TeamNameTwo { get; set; }
         public int PointsScoredTeamOne { get; set; }

@@ -12,7 +12,7 @@ using Microsoft.Owin.Security;
 
 /**
  * @author: Matthew Lane
- * @date: June 6, 2016
+ * @date: June 6, 2016 
  * @version: 0.0.2 - Changes links to apply to project needs
  */
 

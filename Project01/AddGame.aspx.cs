@@ -69,7 +69,7 @@ namespace Project01
         protected void SaveButton_Click(object sender, EventArgs e)
         {
             // Use EF to connect to the server
-            using (FootballScoreModel db = new FootballScoreModel())
+            using (Football_Model db = new Football_Model())
             {
                 // use the Student model to create a new student object and save a new record
                 Football_Score newGame = new Football_Score();
@@ -88,7 +88,7 @@ namespace Project01
                 }
 
                 // add form data to the new student record
-                newGame.GameDate = Convert.ToDateTime(GameDateTextBox.Text);
+                newGame.GameWeek = Convert.ToInt32(GameWeekDropDownList.SelectedValue);
                 newGame.Spectators = Convert.ToInt32(SpectatorsTextBox.Text);
 
                 newGame.TeamNameOne = TeamOneNameTextBox.Text;
@@ -134,7 +134,7 @@ namespace Project01
             int GameId = Convert.ToInt32(Request.QueryString["GameId"]);
 
             // connect to the EF DB
-            using (FootballScoreModel db = new FootballScoreModel())
+            using (Football_Model db = new Football_Model())
             {
                 // populate a student object instance with the StudentID from the URL Parameter
                 Football_Score updatedGameScore = (from GameScore in db.Football_Scores
@@ -153,6 +153,11 @@ namespace Project01
                     SpectatorsTextBox.Text = updatedGameScore.Spectators.ToString();
                 }
             }
+        }
+
+        protected void GameWeekDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

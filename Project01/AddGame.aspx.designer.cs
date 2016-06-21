@@ -13,13 +13,13 @@ namespace Project01 {
     public partial class AddGame {
         
         /// <summary>
-        /// GameDateTextBox control.
+        /// GameWeekDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox GameDateTextBox;
+        protected global::System.Web.UI.WebControls.DropDownList GameWeekDropDownList;
         
         /// <summary>
         /// TeamOneNameTextBox control.
