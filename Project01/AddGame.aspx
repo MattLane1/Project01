@@ -26,6 +26,18 @@
                 </asp:DropDownList>
             </div>
 
+           <div>
+                <label for="GameWeekDropDownList">Sport type </label>
+                <asp:DropDownList ID="Sport" runat="server"
+                    AutoPostBack="true" CssClass="btn btn-default bt-sm dropdown-toggle"
+                    OnSelectedIndexChanged="Sport_SelectedIndexChanged">
+                    <asp:ListItem Text="Football" Value="1" />
+                    <asp:ListItem Text="Soccer" Value="2" />
+                    <asp:ListItem Text="Hockey" Value="3" />
+                    <asp:ListItem Text="Lacrosse" Value="4" />
+                    </asp:DropDownList>
+           </div>
+
                 <div class="form-group">
                     <label class="control-label" for="TeamOneNameTextBox">Team One Name</label>
                     <asp:TextBox runat="server" CssClass="form-control" ID="TeamOneNameTextBox" placeholder="Team One Name" required="true"></asp:TextBox>

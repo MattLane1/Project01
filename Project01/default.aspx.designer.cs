@@ -22,12 +22,39 @@ namespace Project01 {
         protected global::System.Web.UI.WebControls.DropDownList GameWeekDropDownList;
         
         /// <summary>
-        /// GamesGridView control.
+        /// FootballGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GamesGridView;
+        protected global::System.Web.UI.WebControls.GridView FootballGridView;
+        
+        /// <summary>
+        /// SoccarGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView SoccarGridView;
+        
+        /// <summary>
+        /// HockeyGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView HockeyGridView;
+        
+        /// <summary>
+        /// LacrosseGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView LacrosseGridView;
     }
 }

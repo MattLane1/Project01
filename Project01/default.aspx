@@ -5,7 +5,6 @@
         <div class="row">
             <div class="col-md-offset-2 col-md-8"></div>
             <h1>Games List</h1>
-            <h4>Football Scores</h4>
             <a href="AddGame.aspx" class="btn btn-success btn-sm"><i class="fa fa-plus"></i>Add Game </a>
 
             <div>
@@ -27,7 +26,65 @@
                 </asp:DropDownList>
             </div>
 
-            <asp:GridView runat="server" CssClass="table table-bordered table-striped table-hover" ID="GamesGridView" DataKeyNames="GameID" OnRowDeleting="GamesGridView_RowDeleting" AutoGenerateColumns="false">
+            <h4>Football Scores</h4>
+            <asp:GridView runat="server" CssClass="table table-bordered table-striped table-hover" ID="FootballGridView" DataKeyNames="GameID" OnRowDeleting="FootballGridView_RowDeleting" AutoGenerateColumns="false">
+                <Columns>
+                    <asp:BoundField runat="Server" DataField="GameId" HeaderText="Game ID" Visible="false" />
+                    <asp:BoundField runat="Server" DataField="GameWeek" HeaderText="Game Week" Visible="true" />
+                    <asp:BoundField runat="Server" DataField="TeamNameOne" HeaderText="Team One" Visible="true" />
+                    <asp:BoundField runat="Server" DataField="PointsScoredTeamOne" HeaderText="Points Team One" Visible="true" />
+                    <asp:BoundField runat="Server" DataField="PointsAllowedTeamOne" HeaderText="Points Allowed Team One" Visible="true" />
+                    <asp:BoundField runat="Server" DataField="TeamNameTwo" HeaderText="Team Two" Visible="true" />
+                    <asp:BoundField runat="Server" DataField="PointsScoredTeamTwo" HeaderText="Points Team Two" Visible="true" />
+                    <asp:BoundField runat="Server" DataField="PointsAllowedTeamTwo" HeaderText="Points Allowed Team Two" Visible="true" />
+                    <asp:BoundField runat="Server" DataField="TeamWon" HeaderText="Team Won" Visible="true" />
+                    <asp:BoundField runat="Server" DataField="Spectators" HeaderText="Spectators" Visible="true" />
+
+                    <asp:CommandField HeaderText="Delete" DeleteText="Delete" ShowDeleteButton="true" ButtonType="Link"
+                        ControlStyle-CssClass="btn btn-danger btn-sm" />
+                </Columns>
+            </asp:GridView>
+
+                <h4>Soccar Scores</h4>
+                <asp:GridView runat="server" CssClass="table table-bordered table-striped table-hover" ID="SoccarGridView" DataKeyNames="GameID" OnRowDeleting="SoccarGridView_RowDeleting" AutoGenerateColumns="false">
+                <Columns>
+                    <asp:BoundField runat="Server" DataField="GameId" HeaderText="Game ID" Visible="false" />
+                    <asp:BoundField runat="Server" DataField="GameWeek" HeaderText="Game Week" Visible="true" />
+                    <asp:BoundField runat="Server" DataField="TeamNameOne" HeaderText="Team One" Visible="true" />
+                    <asp:BoundField runat="Server" DataField="PointsScoredTeamOne" HeaderText="Points Team One" Visible="true" />
+                    <asp:BoundField runat="Server" DataField="PointsAllowedTeamOne" HeaderText="Points Allowed Team One" Visible="true" />
+                    <asp:BoundField runat="Server" DataField="TeamNameTwo" HeaderText="Team Two" Visible="true" />
+                    <asp:BoundField runat="Server" DataField="PointsScoredTeamTwo" HeaderText="Points Team Two" Visible="true" />
+                    <asp:BoundField runat="Server" DataField="PointsAllowedTeamTwo" HeaderText="Points Allowed Team Two" Visible="true" />
+                    <asp:BoundField runat="Server" DataField="TeamWon" HeaderText="Team Won" Visible="true" />
+                    <asp:BoundField runat="Server" DataField="Spectators" HeaderText="Spectators" Visible="true" />
+
+                    <asp:CommandField HeaderText="Delete" DeleteText="Delete" ShowDeleteButton="true" ButtonType="Link"
+                        ControlStyle-CssClass="btn btn-danger btn-sm" />
+                </Columns>
+            </asp:GridView>
+
+              <h4>Hockey Scores</h4>
+                    <asp:GridView runat="server" CssClass="table table-bordered table-striped table-hover" ID="HockeyGridView" DataKeyNames="GameID" OnRowDeleting="HockeyGridView_RowDeleting" AutoGenerateColumns="false">
+                <Columns>
+                    <asp:BoundField runat="Server" DataField="GameId" HeaderText="Game ID" Visible="false" />
+                    <asp:BoundField runat="Server" DataField="GameWeek" HeaderText="Game Week" Visible="true" />
+                    <asp:BoundField runat="Server" DataField="TeamNameOne" HeaderText="Team One" Visible="true" />
+                    <asp:BoundField runat="Server" DataField="PointsScoredTeamOne" HeaderText="Points Team One" Visible="true" />
+                    <asp:BoundField runat="Server" DataField="PointsAllowedTeamOne" HeaderText="Points Allowed Team One" Visible="true" />
+                    <asp:BoundField runat="Server" DataField="TeamNameTwo" HeaderText="Team Two" Visible="true" />
+                    <asp:BoundField runat="Server" DataField="PointsScoredTeamTwo" HeaderText="Points Team Two" Visible="true" />
+                    <asp:BoundField runat="Server" DataField="PointsAllowedTeamTwo" HeaderText="Points Allowed Team Two" Visible="true" />
+                    <asp:BoundField runat="Server" DataField="TeamWon" HeaderText="Team Won" Visible="true" />
+                    <asp:BoundField runat="Server" DataField="Spectators" HeaderText="Spectators" Visible="true" />
+
+                    <asp:CommandField HeaderText="Delete" DeleteText="Delete" ShowDeleteButton="true" ButtonType="Link"
+                        ControlStyle-CssClass="btn btn-danger btn-sm" />
+                </Columns>
+            </asp:GridView>
+
+              <h4>Lacrosse Scores</h4>
+                    <asp:GridView runat="server" CssClass="table table-bordered table-striped table-hover" ID="LacrosseGridView" DataKeyNames="GameID" OnRowDeleting="LacrosseGridView_RowDeleting" AutoGenerateColumns="false">
                 <Columns>
                     <asp:BoundField runat="Server" DataField="GameId" HeaderText="Game ID" Visible="false" />
                     <asp:BoundField runat="Server" DataField="GameWeek" HeaderText="Game Week" Visible="true" />

@@ -23,7 +23,7 @@ namespace Project01
     {
         /**
           * <summary>
-          * This method is called when the page is displayed, if it is the first time it populates the grids
+          * This method is called when the page is displayed
           * </summary>
           * 
           * @method Page_Load
@@ -33,11 +33,8 @@ namespace Project01
          */
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Check to see if this is the first time the page has been loaded, if so, populate the grid
-            if ((!IsPostBack) && (Request.QueryString.Count > 0))
-            {
-                this.GetGames();
-            }
+
+
         }
 
         /**
@@ -56,106 +53,242 @@ namespace Project01
             Response.Redirect("~/Default.aspx");
         }
 
-      /**
-       * <summary>
-       * This method is called when the save button is pressed. It saves the provided game information to the database
-       * </summary>
-       * 
-       * @method SaveButton_Click
-       * @param {object} sender
-       * @param {GridViewPageEventArgs} e
-       * @returns {void}
-      */
-        protected void SaveButton_Click(object sender, EventArgs e)
-        {
-            // Use EF to connect to the server
-            using (Football_Model db = new Football_Model())
-            {
-                // use the Student model to create a new student object and save a new record
-                Football_Score newGame = new Football_Score();
-
-                int GameId = 0;
-
-                if (Request.QueryString.Count > 0) // our URL has this GameID in it (edit mode)
-                {
-                    // get the id from the URL
-                    GameId = Convert.ToInt32(Request.QueryString["GameId"]);
-
-                    // get the current student from EF DB
-                    newGame = (from GameScore in db.Football_Scores
-                               where GameScore.GameID == GameId
-                               select GameScore).FirstOrDefault();
-                }
-
-                // add form data to the new student record
-                newGame.GameWeek = Convert.ToInt32(GameWeekDropDownList.SelectedValue);
-                newGame.Spectators = Convert.ToInt32(SpectatorsTextBox.Text);
-
-                newGame.TeamNameOne = TeamOneNameTextBox.Text;
-                newGame.TeamNameTwo = TeamTwoNameTextBox.Text;
-
-                newGame.PointsScoredTeamOne = Convert.ToInt32(TeamOneScoreTextBox.Text);
-                newGame.PointsScoredTeamTwo = Convert.ToInt32(TeamTwoScoreTextBox.Text);
-
-                newGame.PointsAllowedTeamOne = Convert.ToInt32(TeamTwoScoreTextBox.Text);
-                newGame.PointsAllowedTeamTwo = Convert.ToInt32(TeamOneScoreTextBox.Text);
-
-                //Check which team had the higher score, and save it as the winner
-                if (newGame.PointsScoredTeamOne > newGame.PointsScoredTeamTwo)
-                    newGame.TeamWon = newGame.TeamNameOne;
-                else
-                    newGame.TeamWon = newGame.TeamNameTwo;
-
-                // use LINQ to ADO.NET to add / insert new student into the database
-                if (GameId == 0)
-                {
-                    db.Football_Scores.Add(newGame);
-                }
-
-                // save our changes - also updates and inserts
-                db.SaveChanges();
-
-                // Redirect back to the updated students page
-                Response.Redirect("~/Default.aspx");
-            }
-        }
-
         /**
          * <summary>
-         * This method gets the information about the games from the database, and checks to see if the game already exists
+         * This method is called when the save button is pressed. It saves the provided game information to the database
          * </summary>
          * 
-         * @method GetGames
+         * @method SaveButton_Click
+         * @param {object} sender
+         * @param {GridViewPageEventArgs} e
          * @returns {void}
         */
-        protected void GetGames()
+        protected void SaveButton_Click(object sender, EventArgs e)
         {
-            // populate the form with existing data from the database
-            int GameId = Convert.ToInt32(Request.QueryString["GameId"]);
 
-            // connect to the EF DB
-            using (Football_Model db = new Football_Model())
+            if (Sport.SelectedValue == "1")
             {
-                // populate a student object instance with the StudentID from the URL Parameter
-                Football_Score updatedGameScore = (from GameScore in db.Football_Scores
-                                                where GameScore.GameID == GameId
-                                                select GameScore).FirstOrDefault();
-
-                // map the student properties to the form controls
-                if (updatedGameScore != null)
+                // Use EF to connect to the server
+                using (SportScores db = new SportScores())
                 {
-                    TeamOneNameTextBox.Text = updatedGameScore.TeamNameOne;
-                    TeamTwoNameTextBox.Text = updatedGameScore.TeamNameTwo;
+                    // use the Student model to create a new student object and save a new record
+                    Football_Score newGame = new Football_Score();
 
-                    TeamOneScoreTextBox.Text = updatedGameScore.PointsScoredTeamOne.ToString();
-                    TeamTwoScoreTextBox.Text = updatedGameScore.PointsScoredTeamTwo.ToString();
+                    int GameId = 0;
 
-                    SpectatorsTextBox.Text = updatedGameScore.Spectators.ToString();
+                    if (Request.QueryString.Count > 0) // our URL has this GameID in it (edit mode)
+                    {
+                        // get the id from the URL
+                        GameId = Convert.ToInt32(Request.QueryString["GameId"]);
+
+                        // get the current student from EF DB
+                        newGame = (from GameScore in db.Football_Scores
+                                   where GameScore.GameID == GameId
+                                   select GameScore).FirstOrDefault();
+                    }
+
+                    // add form data to the new student record
+                    newGame.GameWeek = Convert.ToInt32(GameWeekDropDownList.SelectedValue);
+                    newGame.Spectators = Convert.ToInt32(SpectatorsTextBox.Text);
+
+                    newGame.TeamNameOne = TeamOneNameTextBox.Text;
+                    newGame.TeamNameTwo = TeamTwoNameTextBox.Text;
+
+                    newGame.PointsScoredTeamOne = Convert.ToInt32(TeamOneScoreTextBox.Text);
+                    newGame.PointsScoredTeamTwo = Convert.ToInt32(TeamTwoScoreTextBox.Text);
+
+                    newGame.PointsAllowedTeamOne = Convert.ToInt32(TeamTwoScoreTextBox.Text);
+                    newGame.PointsAllowedTeamTwo = Convert.ToInt32(TeamOneScoreTextBox.Text);
+
+                    //Check which team had the higher score, and save it as the winner
+                    if (newGame.PointsScoredTeamOne > newGame.PointsScoredTeamTwo)
+                        newGame.TeamWon = newGame.TeamNameOne;
+                    else
+                        newGame.TeamWon = newGame.TeamNameTwo;
+
+                    // use LINQ to ADO.NET to add / insert new student into the database
+                    if (GameId == 0)
+                    {
+                        db.Football_Scores.Add(newGame);
+                    }
+
+                    // save our changes - also updates and inserts
+                    db.SaveChanges();
+
+                    // Redirect back to the updated students page
+                    Response.Redirect("~/Default.aspx");
+                }
+            }
+
+            if (Sport.SelectedValue == "2")
+            {
+                // Use EF to connect to the server
+                using (SportScores db = new SportScores())
+                {
+                    // use the Student model to create a new student object and save a new record
+                    Soccer_Score newGame = new Soccer_Score();
+
+                    int GameId = 0;
+
+                    if (Request.QueryString.Count > 0) // our URL has this GameID in it (edit mode)
+                    {
+                        // get the id from the URL
+                        GameId = Convert.ToInt32(Request.QueryString["GameId"]);
+
+                        // get the current student from EF DB
+                        newGame = (from GameScore in db.Soccer_Scores
+                                   where GameScore.GameID == GameId
+                                   select GameScore).FirstOrDefault();
+                    }
+
+                    // add form data to the new student record
+                    newGame.GameWeek = Convert.ToInt32(GameWeekDropDownList.SelectedValue);
+                    newGame.Spectators = Convert.ToInt32(SpectatorsTextBox.Text);
+
+                    newGame.TeamNameOne = TeamOneNameTextBox.Text;
+                    newGame.TeamNameTwo = TeamTwoNameTextBox.Text;
+
+                    newGame.PointsScoredTeamOne = Convert.ToInt32(TeamOneScoreTextBox.Text);
+                    newGame.PointsScoredTeamTwo = Convert.ToInt32(TeamTwoScoreTextBox.Text);
+
+                    newGame.PointsAllowedTeamOne = Convert.ToInt32(TeamTwoScoreTextBox.Text);
+                    newGame.PointsAllowedTeamTwo = Convert.ToInt32(TeamOneScoreTextBox.Text);
+
+                    //Check which team had the higher score, and save it as the winner
+                    if (newGame.PointsScoredTeamOne > newGame.PointsScoredTeamTwo)
+                        newGame.TeamWon = newGame.TeamNameOne;
+                    else
+                        newGame.TeamWon = newGame.TeamNameTwo;
+
+                    // use LINQ to ADO.NET to add / insert new student into the database
+                    if (GameId == 0)
+                    {
+                        db.Soccer_Scores.Add(newGame);
+                    }
+
+                    // save our changes - also updates and inserts
+                    db.SaveChanges();
+
+                    // Redirect back to the updated students page
+                    Response.Redirect("~/Default.aspx");
+                }
+            }
+
+            if (Sport.SelectedValue == "3")
+            {
+                // Use EF to connect to the server
+                using (SportScores db = new SportScores())
+                {
+                    // use the Student model to create a new student object and save a new record
+                    Hockey_Score newGame = new Hockey_Score();
+
+                    int GameId = 0;
+
+                    if (Request.QueryString.Count > 0) // our URL has this GameID in it (edit mode)
+                    {
+                        // get the id from the URL
+                        GameId = Convert.ToInt32(Request.QueryString["GameId"]);
+
+                        // get the current student from EF DB
+                        newGame = (from GameScore in db.Hockey_Scores
+                                   where GameScore.GameID == GameId
+                                   select GameScore).FirstOrDefault();
+                    }
+
+                    // add form data to the new student record
+                    newGame.GameWeek = Convert.ToInt32(GameWeekDropDownList.SelectedValue);
+                    newGame.Spectators = Convert.ToInt32(SpectatorsTextBox.Text);
+
+                    newGame.TeamNameOne = TeamOneNameTextBox.Text;
+                    newGame.TeamNameTwo = TeamTwoNameTextBox.Text;
+
+                    newGame.PointsScoredTeamOne = Convert.ToInt32(TeamOneScoreTextBox.Text);
+                    newGame.PointsScoredTeamTwo = Convert.ToInt32(TeamTwoScoreTextBox.Text);
+
+                    newGame.PointsAllowedTeamOne = Convert.ToInt32(TeamTwoScoreTextBox.Text);
+                    newGame.PointsAllowedTeamTwo = Convert.ToInt32(TeamOneScoreTextBox.Text);
+
+                    //Check which team had the higher score, and save it as the winner
+                    if (newGame.PointsScoredTeamOne > newGame.PointsScoredTeamTwo)
+                        newGame.TeamWon = newGame.TeamNameOne;
+                    else
+                        newGame.TeamWon = newGame.TeamNameTwo;
+
+                    // use LINQ to ADO.NET to add / insert new student into the database
+                    if (GameId == 0)
+                    {
+                        db.Hockey_Scores.Add(newGame);
+                    }
+
+                    // save our changes - also updates and inserts
+                    db.SaveChanges();
+
+                    // Redirect back to the updated students page
+                    Response.Redirect("~/Default.aspx");
+                }
+            }
+
+            if (Sport.SelectedValue == "4")
+            {
+                // Use EF to connect to the server
+                using (SportScores db = new SportScores())
+                {
+                    // use the Student model to create a new student object and save a new record
+                    lacrosse_Score newGame = new lacrosse_Score();
+
+                    int GameId = 0;
+
+                    if (Request.QueryString.Count > 0) // our URL has this GameID in it (edit mode)
+                    {
+                        // get the id from the URL
+                        GameId = Convert.ToInt32(Request.QueryString["GameId"]);
+
+                        // get the current student from EF DB
+                        newGame = (from GameScore in db.lacrosse_Scores
+                                   where GameScore.GameID == GameId
+                                   select GameScore).FirstOrDefault();
+                    }
+
+                    // add form data to the new student record
+                    newGame.GameWeek = Convert.ToInt32(GameWeekDropDownList.SelectedValue);
+                    newGame.Spectators = Convert.ToInt32(SpectatorsTextBox.Text);
+
+                    newGame.TeamNameOne = TeamOneNameTextBox.Text;
+                    newGame.TeamNameTwo = TeamTwoNameTextBox.Text;
+
+                    newGame.PointsScoredTeamOne = Convert.ToInt32(TeamOneScoreTextBox.Text);
+                    newGame.PointsScoredTeamTwo = Convert.ToInt32(TeamTwoScoreTextBox.Text);
+
+                    newGame.PointsAllowedTeamOne = Convert.ToInt32(TeamTwoScoreTextBox.Text);
+                    newGame.PointsAllowedTeamTwo = Convert.ToInt32(TeamOneScoreTextBox.Text);
+
+                    //Check which team had the higher score, and save it as the winner
+                    if (newGame.PointsScoredTeamOne > newGame.PointsScoredTeamTwo)
+                        newGame.TeamWon = newGame.TeamNameOne;
+                    else
+                        newGame.TeamWon = newGame.TeamNameTwo;
+
+                    // use LINQ to ADO.NET to add / insert new student into the database
+                    if (GameId == 0)
+                    {
+                        db.lacrosse_Scores.Add(newGame);
+                    }
+
+                    // save our changes - also updates and inserts
+                    db.SaveChanges();
+
+                    // Redirect back to the updated students page
+                    Response.Redirect("~/Default.aspx");
                 }
             }
         }
 
         protected void GameWeekDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Sport_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

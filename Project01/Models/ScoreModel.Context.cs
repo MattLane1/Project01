@@ -13,10 +13,10 @@ namespace Project01.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Football_Model : DbContext
+    public partial class SportScores : DbContext
     {
-        public Football_Model()
-            : base("name=Football_Model")
+        public SportScores()
+            : base("name=SportScores")
         {
         }
     
@@ -26,5 +26,8 @@ namespace Project01.Models
         }
     
         public virtual DbSet<Football_Score> Football_Scores { get; set; }
+        public virtual DbSet<Hockey_Score> Hockey_Scores { get; set; }
+        public virtual DbSet<lacrosse_Score> lacrosse_Scores { get; set; }
+        public virtual DbSet<Soccer_Score> Soccer_Scores { get; set; }
     }
 }

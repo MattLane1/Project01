@@ -48,23 +48,6 @@ namespace Project01
             }
         }
 
-    /**
-    * <summary>
-    * This method will get the date associated with the game for displaying week to week
-    * </summary>
-    * 
-    * @method GetDates
-    * @returns {void}
-    */
-        protected void GetDates()
-        {
-            using (Football_Model db = new Football_Model())
-            {
-                // query the Students Table using EF and LINQ
-                var Games = (from allGames in db.Football_Scores where allGames.GameID == 1 select allGames);
-            }
-        }
-
         /**
          * <summary>
          * This method gets the list of games from the DB based on the selected week
@@ -78,23 +61,49 @@ namespace Project01
         {
 
             // connect to EF
-            using (Football_Model db = new Football_Model())
+            using (SportScores db = new SportScores())
             {
 
                 int gameWeek = Convert.ToInt32(GameWeekDropDownList.SelectedValue);
 
-                   // query the Students Table using EF and LINQ
-                var GameNum = (from allGames in db.Football_Scores
-                                    select allGames.GameID);
-
-                    // query the Students Table using EF and LINQ
-                    var Games = (from allGames in db.Football_Scores
+                // query the Students Table using EF and LINQ
+                var FootBallGames = (from allGames in db.Football_Scores
                                  where allGames.GameWeek == gameWeek
                                  select allGames);
 
                 // bind the result to the GridView
-                GamesGridView.DataSource = Games.ToList();
-                GamesGridView.DataBind();
+                FootballGridView.DataSource = FootBallGames.ToList();
+                FootballGridView.DataBind();
+
+                // query the Students Table using EF and LINQ
+                var SoccarGames = (from allGames in db.Soccer_Scores
+                             where allGames.GameWeek == gameWeek
+                             select allGames);
+
+                // bind the result to the GridView
+                SoccarGridView.DataSource = SoccarGames.ToList();
+                SoccarGridView.DataBind();
+
+                // query the Students Table using EF and LINQ
+                var HockeyGames = (from allGames in db.Hockey_Scores
+                                   where allGames.GameWeek == gameWeek
+                                   select allGames);
+
+                // bind the result to the GridView
+                HockeyGridView.DataSource = HockeyGames.ToList();
+                HockeyGridView.DataBind();
+
+                // query the Students Table using EF and LINQ
+                var LaCrosseGames = (from allGames in db.lacrosse_Scores
+                                   where allGames.GameWeek == gameWeek
+                                   select allGames);
+
+                // bind the result to the GridView
+                LacrosseGridView.DataSource = LaCrosseGames.ToList();
+                LacrosseGridView.DataBind();
+
+
+
             }
 
            // GetDates();
@@ -114,57 +123,7 @@ namespace Project01
         protected void GamesGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
 
-            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
 
-            if (authenticationManager.User.Identity.Name == "")
-            {
-                Response.Redirect("~/Login.aspx");
-            }
-            else
-            {
-                // store which row was clicked
-                int selectedRow = e.RowIndex;
-
-                // get the selected StudentID using the Grid's DataKey collection
-                int GameID = Convert.ToInt32(GamesGridView.DataKeys[selectedRow].Values["GameID"]);
-
-                // use EF to find the selected student in the DB and remove it
-                using (Football_Model db = new Football_Model())
-                {
-                    // create object of the Student class and store the query string inside of it
-                    Football_Score deletedGame = (from savedGames in db.Football_Scores
-                                                  where savedGames.GameID == GameID
-                                                  select savedGames).FirstOrDefault();
-
-                    // remove the selected student from the db
-                    db.Football_Scores.Remove(deletedGame);
-
-                    // save my changes back to the database
-                    db.SaveChanges();
-
-                    // refresh the grid
-                    this.GetGames();
-                }
-            }
-        }
-
-        /**
-         * <summary>
-         * This event handler allows pagination to occur for the Students page
-         * </summary>
-         * 
-         * @method GamesGridView_PageIndexChanging
-         * @param {object} sender
-         * @param {GridViewPageEventArgs} e
-         * @returns {void}
-         */
-        protected void GamesGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            // Set the new page number
-            GamesGridView.PageIndex = e.NewPageIndex;
-
-            // refresh the grid
-            this.GetGames();
         }
 
         /**
@@ -203,6 +162,150 @@ namespace Project01
         protected void GameWeekDropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
             GetGames();
+        }
+
+        protected void FootballGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+
+            if (authenticationManager.User.Identity.Name == "")
+            {
+                Response.Redirect("~/Login.aspx");
+            }
+            else
+            {
+                // store which row was clicked
+                int selectedRow = e.RowIndex;
+
+                // get the selected StudentID using the Grid's DataKey collection
+                int GameID = Convert.ToInt32(FootballGridView.DataKeys[selectedRow].Values["GameID"]);
+
+                // use EF to find the selected student in the DB and remove it
+                using (SportScores db = new SportScores())
+                {
+                    // create object of the Student class and store the query string inside of it
+                    Football_Score deletedGame = (from savedGames in db.Football_Scores
+                                                where savedGames.GameID == GameID
+                                                select savedGames).FirstOrDefault();
+
+                    // remove the selected student from the db
+                    db.Football_Scores.Remove(deletedGame);
+
+                    // save my changes back to the database
+                    db.SaveChanges();
+
+                    // refresh the grid
+                    this.GetGames();
+                }
+            }
+        }
+
+        protected void SoccarGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+
+            if (authenticationManager.User.Identity.Name == "")
+            {
+                Response.Redirect("~/Login.aspx");
+            }
+            else
+            {
+                // store which row was clicked
+                int selectedRow = e.RowIndex;
+
+                // get the selected StudentID using the Grid's DataKey collection
+                int GameID = Convert.ToInt32(SoccarGridView.DataKeys[selectedRow].Values["GameID"]);
+
+                // use EF to find the selected student in the DB and remove it
+                using (SportScores db = new SportScores())
+                {
+                    // create object of the Student class and store the query string inside of it
+                    Soccer_Score deletedGame = (from savedGames in db.Soccer_Scores
+                                                  where savedGames.GameID == GameID
+                                                  select savedGames).FirstOrDefault();
+
+                    // remove the selected student from the db
+                    db.Soccer_Scores.Remove(deletedGame);
+
+                    // save my changes back to the database
+                    db.SaveChanges();
+
+                    // refresh the grid
+                    this.GetGames();
+                }
+            }
+        }
+
+        protected void HockeyGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+
+            if (authenticationManager.User.Identity.Name == "")
+            {
+                Response.Redirect("~/Login.aspx");
+            }
+            else
+            {
+                // store which row was clicked
+                int selectedRow = e.RowIndex;
+
+                // get the selected StudentID using the Grid's DataKey collection
+                int GameID = Convert.ToInt32(HockeyGridView.DataKeys[selectedRow].Values["GameID"]);
+
+                // use EF to find the selected student in the DB and remove it
+                using (SportScores db = new SportScores())
+                {
+                    // create object of the Student class and store the query string inside of it
+                    Hockey_Score deletedGame = (from savedGames in db.Hockey_Scores
+                                                where savedGames.GameID == GameID
+                                                select savedGames).FirstOrDefault();
+
+                    // remove the selected student from the db
+                    db.Hockey_Scores.Remove(deletedGame);
+
+                    // save my changes back to the database
+                    db.SaveChanges();
+
+                    // refresh the grid
+                    this.GetGames();
+                }
+            }
+        }
+
+        protected void LacrosseGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+
+            if (authenticationManager.User.Identity.Name == "")
+            {
+                Response.Redirect("~/Login.aspx");
+            }
+            else
+            {
+                // store which row was clicked
+                int selectedRow = e.RowIndex;
+
+                // get the selected StudentID using the Grid's DataKey collection
+                int GameID = Convert.ToInt32(LacrosseGridView.DataKeys[selectedRow].Values["GameID"]);
+
+                // use EF to find the selected student in the DB and remove it
+                using (SportScores db = new SportScores())
+                {
+                    // create object of the Student class and store the query string inside of it
+                    lacrosse_Score deletedGame = (from savedGames in db.lacrosse_Scores
+                                                where savedGames.GameID == GameID
+                                                select savedGames).FirstOrDefault();
+
+                    // remove the selected student from the db
+                    db.lacrosse_Scores.Remove(deletedGame);
+
+                    // save my changes back to the database
+                    db.SaveChanges();
+
+                    // refresh the grid
+                    this.GetGames();
+                }
+            }
         }
     }
 }
