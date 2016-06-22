@@ -8,35 +8,35 @@
                 <h5>All fields are required</h5>
                 <br />
 
-            <div>
-                <label for="GameWeekDropDownList">Week To Display </label>
-                <asp:DropDownList ID="GameWeekDropDownList" runat="server"
-                    AutoPostBack="true" CssClass="btn btn-default bt-sm dropdown-toggle"
-                    OnSelectedIndexChanged="GameWeekDropDownList_SelectedIndexChanged">
-                    <asp:ListItem Text="Week 1" Value="1" />
-                    <asp:ListItem Text="Week 2" Value="2" />
-                    <asp:ListItem Text="Week 3" Value="3" />
-                    <asp:ListItem Text="Week 4" Value="4" />
-                    <asp:ListItem Text="Week 5" Value="5" />
-                    <asp:ListItem Text="Week 6" Value="6" />
-                    <asp:ListItem Text="Week 7" Value="7" />
-                    <asp:ListItem Text="Week 8" Value="8" />
-                    <asp:ListItem Text="Week 9" Value="9" />
-                    <asp:ListItem Text="Week 10" Value="10" />
-                </asp:DropDownList>
-            </div>
-
-           <div>
-                <label for="GameWeekDropDownList">Sport type </label>
-                <asp:DropDownList ID="Sport" runat="server"
-                    AutoPostBack="true" CssClass="btn btn-default bt-sm dropdown-toggle"
-                    OnSelectedIndexChanged="Sport_SelectedIndexChanged">
-                    <asp:ListItem Text="Football" Value="1" />
-                    <asp:ListItem Text="Soccer" Value="2" />
-                    <asp:ListItem Text="Hockey" Value="3" />
-                    <asp:ListItem Text="Lacrosse" Value="4" />
+                <div>
+                    <label for="GameWeekDropDownList">Week To Display </label>
+                    <asp:DropDownList ID="GameWeekDropDownList" runat="server"
+                        AutoPostBack="true" CssClass="btn btn-default bt-sm dropdown-toggle"
+                        OnSelectedIndexChanged="GameWeekDropDownList_SelectedIndexChanged">
+                        <asp:ListItem Text="Week 1" Value="1" />
+                        <asp:ListItem Text="Week 2" Value="2" />
+                        <asp:ListItem Text="Week 3" Value="3" />
+                        <asp:ListItem Text="Week 4" Value="4" />
+                        <asp:ListItem Text="Week 5" Value="5" />
+                        <asp:ListItem Text="Week 6" Value="6" />
+                        <asp:ListItem Text="Week 7" Value="7" />
+                        <asp:ListItem Text="Week 8" Value="8" />
+                        <asp:ListItem Text="Week 9" Value="9" />
+                        <asp:ListItem Text="Week 10" Value="10" />
                     </asp:DropDownList>
-           </div>
+                </div>
+
+                <div>
+                    <label for="GameWeekDropDownList">Sport type </label>
+                    <asp:DropDownList ID="Sport" runat="server"
+                        AutoPostBack="true" CssClass="btn btn-default bt-sm dropdown-toggle"
+                        OnSelectedIndexChanged="Sport_SelectedIndexChanged">
+                        <asp:ListItem Text="Football" Value="1" />
+                        <asp:ListItem Text="Soccer" Value="2" />
+                        <asp:ListItem Text="Hockey" Value="3" />
+                        <asp:ListItem Text="Lacrosse" Value="4" />
+                    </asp:DropDownList>
+                </div>
 
                 <div class="form-group">
                     <label class="control-label" for="TeamOneNameTextBox">Team One Name</label>

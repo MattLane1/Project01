@@ -12,9 +12,9 @@ using System.Web.ModelBinding;
 
 /**
  * @author: Matthew Lane
- * @date: June 14, 2016
+ * @date: June 18, 2016
  * @page: This page allows a user to add a new game to the database
- * @version: 1.0 - Connected page to database, it is populating correctly. 
+ * @version: 2.0 - Can now add multiple games, 4 sets of games being tracked
  */
 
 namespace Project01
@@ -65,7 +65,7 @@ namespace Project01
         */
         protected void SaveButton_Click(object sender, EventArgs e)
         {
-
+            //The user has selected to add a Football game
             if (Sport.SelectedValue == "1")
             {
                 // Use EF to connect to the server
@@ -120,6 +120,7 @@ namespace Project01
                 }
             }
 
+            //The user has selected to add a Soccar game
             if (Sport.SelectedValue == "2")
             {
                 // Use EF to connect to the server
@@ -174,6 +175,7 @@ namespace Project01
                 }
             }
 
+            //The user has selected to add a Hockey game
             if (Sport.SelectedValue == "3")
             {
                 // Use EF to connect to the server
@@ -228,6 +230,7 @@ namespace Project01
                 }
             }
 
+            //The user has selected to add a Lacrosse game
             if (Sport.SelectedValue == "4")
             {
                 // Use EF to connect to the server
@@ -283,11 +286,31 @@ namespace Project01
             }
         }
 
+        /**
+        * <summary>
+        * This method is called when the user has changed the week they want displayted. We pick this number up later.
+        * </summary>
+        * 
+        * @method Page_Load
+        * @param {object} sender
+        * @param {GridViewPageEventArgs} e
+        * @returns {void}
+        */
         protected void GameWeekDropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
+        /**
+        * <summary>
+        * This method is called when the user selects what sport they wish to add a score for. We pick this up later. 
+        * </summary>
+        * 
+        * @method Page_Load
+        * @param {object} sender
+        * @param {GridViewPageEventArgs} e
+        * @returns {void}
+        */
         protected void Sport_SelectedIndexChanged(object sender, EventArgs e)
         {
 

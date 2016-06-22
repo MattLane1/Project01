@@ -1,4 +1,5 @@
-﻿using System;
+﻿//Using statements
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,10 +15,28 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 
+/**
+ * @author: Matthew Lane
+ * @date: June 20th, 2016
+ * @page: This page allows a user, or the admin, to edit a user account
+ * @version 1.0 - Set up the page with all edit controls included and site security. 
+ */
+
 namespace Project01.User
 {
     public partial class UserDetails : System.Web.UI.Page
     {
+        /**
+        * <summary>
+        * This method is called when the page is displayed, if it is the first time, it gets the users info
+        * If user info exists, then it populats the edit controls with it
+        * </summary>
+        * 
+        * @method Page_Load
+        * @param {object} sender
+        * @param {GridViewPageEventArgs} e
+        * @returns {void}
+        */
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
@@ -29,10 +48,10 @@ namespace Project01.User
                 }
                 else
                 {
-                
                     //Store session info and authentication methods in the authentiationManager object
                     var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
                   
+                    //Connect to the DB and get the users info
                     using (UserConnection db = new UserConnection())
                     {
                         AspNetUser updatedUser = (from user in db.AspNetUsers
@@ -52,12 +71,22 @@ namespace Project01.User
             }
         }
 
+        /**
+        * <summary>
+        * This method gets the information about the current, or selected, user
+        * </summary>
+        * 
+        * @method GetUser
+        * @returns {void}
+        */
         protected void GetUser()
         {
             string UserID = Request.QueryString["Id"].ToString();
 
+            //Connect to the Db
             using (UserConnection db = new UserConnection())
             {
+                //Get the users info which has the same ID as the selected one
                 AspNetUser updatedUser = (from user in db.AspNetUsers
                                           where user.Id == UserID
                                           select user).FirstOrDefault();
@@ -71,12 +100,32 @@ namespace Project01.User
             }
         }
 
+        /**
+        * <summary>
+        * This method is called when the cancel button is pressed, it redirects back to the main page
+        * </summary>
+        * 
+        * @method CancelButton_Click
+        * @param {object} sender
+        * @param {GridViewPageEventArgs} e
+        * @returns {void}
+        */
         protected void CancelButton_Click(object sender, EventArgs e)
         {
             //Reidrect to user page
-            Response.Redirect("~/User/Users.aspx");
+            Response.Redirect("~/Default.aspx");
         }
 
+        /**
+        * <summary>
+        * This method is called when the save button is pressed, it edits a user, or creates a new one
+        * </summary>
+        * 
+        * @method SaveButton_Click
+        * @param {object} sender
+        * @param {GridViewPageEventArgs} e
+        * @returns {void}
+        */
         protected void SaveButton_Click(object sender, EventArgs e)
         {
             string UserID = "";
@@ -84,14 +133,18 @@ namespace Project01.User
             //Store session info and authentication methods in the authentiationManager object
             var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
 
-          //  if (Request.QueryString.Count > 0)
-          //  {
+            //Connect to the database 
                 using (UserConnection db = new UserConnection())
                 {
                     AspNetUser newUser = new AspNetUser();
 
-                //  UserID = Request.QueryString["Id"].ToString();
-                UserID = authenticationManager.User.Identity.GetUserId();
+                //If the user is the Admin account, then get the user via the edit button, since the Admin can edit anyone
+                if (authenticationManager.User.Identity.GetUserName() == "Admin")
+                    UserID = Request.QueryString["Id"].ToString();
+
+                //If the user is not the Admin, then get the info from the currently logged in user, since the normal user can only edit themselves
+                else
+                    UserID = authenticationManager.User.Identity.GetUserId();
 
                     newUser = (from users in db.AspNetUsers
                                where users.Id == UserID
@@ -110,8 +163,6 @@ namespace Project01.User
                     else
                         Response.Redirect("~/Default.aspx");
                 }
-
-           // }
 
             //If creating a new user
             if (UserID == "")

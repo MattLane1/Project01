@@ -1,4 +1,5 @@
-﻿using System;
+﻿//Using statements
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,20 +11,57 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 
+/**
+ * @author: Matthew Lane
+ * @date: June 21, 2016
+ * @page: This page allows the user to register an account with the site
+ * @version 1.0 - Set up the form and connected it ot the DB
+ */
+
 namespace Project01
 {
     public partial class Register : System.Web.UI.Page
     {
+        /**
+        * <summary>
+        * This method is called when the page is displayed
+        * </summary>
+        * 
+        * @method Page_Load
+        * @param {object} sender
+        * @param {GridViewPageEventArgs} e
+        * @returns {void}
+        */
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
+        /**
+        * <summary>
+        * This method is called when a user clicks the cancel button. It redirects them to the main page
+        * </summary>
+        * 
+        * @method CancelButton_Click
+        * @param {object} sender
+        * @param {GridViewPageEventArgs} e
+        * @returns {void}
+        */
         protected void CancelButton_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Default.aspx");
         }
 
+        /**
+        * <summary>
+        * This method is called when a user clicks the register page. It checks their info and then registers the account if all is well
+        * </summary>
+        * 
+        * @method CancelButton_Click
+        * @param {object} sender
+        * @param {GridViewPageEventArgs} e
+        * @returns {void}
+        */
         protected void RegisterButton_Click(object sender, EventArgs e)
         {
             //create a new userStore and manager

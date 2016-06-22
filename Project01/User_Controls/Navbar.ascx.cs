@@ -1,4 +1,5 @@
-﻿using System;
+﻿//Using Statements
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,18 +14,29 @@ using Microsoft.Owin.Security;
 /**
  * @author: Matthew Lane
  * @date: June 6, 2016 
- * @version: 0.0.2 - Changes links to apply to project needs
+ * @page: This page allows the user to navigate through the website
+ * @version: 1.0 - Updated all the links to represent the new pages
  */
 
 namespace Project01
 {
     public partial class Navbar : System.Web.UI.UserControl
     {
+        /**
+        * <summary>
+        * This method is called when the page is displayed
+        * </summary>
+        * 
+        * @method Page_Load
+        * @param {object} sender
+        * @param {GridViewPageEventArgs} e
+        * @returns {void}
+        */
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                //Check if the Admin is logged in
+                //Check if the Admin is logged in, if so they get access to the users page
                 if (HttpContext.Current.User.Identity.Name.ToString() == "Admin")
                 {
                     AdminPlaceHolder.Visible = true;
@@ -63,6 +75,7 @@ namespace Project01
          */
         private void SetActivePage()
         {
+            //Change which page is highlighted based on which page the user is on
             switch (Page.Title)
             {
                 case "Scores":
@@ -76,6 +89,12 @@ namespace Project01
                     break;
                 case "Contact":
                     contact.Attributes.Add("class", "active");
+                    break;
+                case "User Details":
+                    EditUserDetails.Attributes.Add("class", "active");
+                    break;
+                case "Users":
+                    UserAccounts.Attributes.Add("class", "active");
                     break;
             }
         }

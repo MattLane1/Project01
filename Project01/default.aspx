@@ -45,8 +45,8 @@
                 </Columns>
             </asp:GridView>
 
-                <h4>Soccar Scores</h4>
-                <asp:GridView runat="server" CssClass="table table-bordered table-striped table-hover" ID="SoccarGridView" DataKeyNames="GameID" OnRowDeleting="SoccarGridView_RowDeleting" AutoGenerateColumns="false">
+            <h4>Soccar Scores</h4>
+            <asp:GridView runat="server" CssClass="table table-bordered table-striped table-hover" ID="SoccarGridView" DataKeyNames="GameID" OnRowDeleting="SoccarGridView_RowDeleting" AutoGenerateColumns="false">
                 <Columns>
                     <asp:BoundField runat="Server" DataField="GameId" HeaderText="Game ID" Visible="false" />
                     <asp:BoundField runat="Server" DataField="GameWeek" HeaderText="Game Week" Visible="true" />
@@ -64,8 +64,8 @@
                 </Columns>
             </asp:GridView>
 
-              <h4>Hockey Scores</h4>
-                    <asp:GridView runat="server" CssClass="table table-bordered table-striped table-hover" ID="HockeyGridView" DataKeyNames="GameID" OnRowDeleting="HockeyGridView_RowDeleting" AutoGenerateColumns="false">
+            <h4>Hockey Scores</h4>
+            <asp:GridView runat="server" CssClass="table table-bordered table-striped table-hover" ID="HockeyGridView" DataKeyNames="GameID" OnRowDeleting="HockeyGridView_RowDeleting" AutoGenerateColumns="false">
                 <Columns>
                     <asp:BoundField runat="Server" DataField="GameId" HeaderText="Game ID" Visible="false" />
                     <asp:BoundField runat="Server" DataField="GameWeek" HeaderText="Game Week" Visible="true" />
@@ -83,8 +83,8 @@
                 </Columns>
             </asp:GridView>
 
-              <h4>Lacrosse Scores</h4>
-                    <asp:GridView runat="server" CssClass="table table-bordered table-striped table-hover" ID="LacrosseGridView" DataKeyNames="GameID" OnRowDeleting="LacrosseGridView_RowDeleting" AutoGenerateColumns="false">
+            <h4>Lacrosse Scores</h4>
+            <asp:GridView runat="server" CssClass="table table-bordered table-striped table-hover" ID="LacrosseGridView" DataKeyNames="GameID" OnRowDeleting="LacrosseGridView_RowDeleting" AutoGenerateColumns="false">
                 <Columns>
                     <asp:BoundField runat="Server" DataField="GameId" HeaderText="Game ID" Visible="false" />
                     <asp:BoundField runat="Server" DataField="GameWeek" HeaderText="Game Week" Visible="true" />

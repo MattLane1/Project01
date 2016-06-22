@@ -19,9 +19,9 @@ using Microsoft.Owin.Security;
 
 /**
  * @author: Matthew Lane
- * @date: June 14, 2016
+ * @date: June 15, 2016
  * @page: This page holds the grids of the currently reported scores
- * @version: 1.8 - Completed Grids and connection to Db. Still need to allow for viewing one week at a time. 
+ * @version: 2.0 - This page now holds the info on 4 games, and a user can switch between the weeks successfully
  */
 
 namespace Project01
@@ -30,7 +30,7 @@ namespace Project01
     {
         /**
         * <summary>
-        * This method is called when the page is displayed, if it is the first time it populates the grids
+        * This method is called when the page is displayed, if it is the first time it populates the four grids
         * </summary>
         * 
         * @method Page_Load
@@ -40,7 +40,7 @@ namespace Project01
         */
         protected void Page_Load(object sender, EventArgs e)
         {
-            // if loading the page for the first time, populate the student grid
+            // if loading the page for the first time, populate the grid
             if (!IsPostBack)
             {
                 // Get the game data
@@ -66,7 +66,7 @@ namespace Project01
 
                 int gameWeek = Convert.ToInt32(GameWeekDropDownList.SelectedValue);
 
-                // query the Students Table using EF and LINQ
+                // query the games Table for the football scores using EF and LINQ
                 var FootBallGames = (from allGames in db.Football_Scores
                                  where allGames.GameWeek == gameWeek
                                  select allGames);
@@ -75,7 +75,7 @@ namespace Project01
                 FootballGridView.DataSource = FootBallGames.ToList();
                 FootballGridView.DataBind();
 
-                // query the Students Table using EF and LINQ
+                // query the games Table for the soccer scores using EF and LINQ
                 var SoccarGames = (from allGames in db.Soccer_Scores
                              where allGames.GameWeek == gameWeek
                              select allGames);
@@ -84,7 +84,7 @@ namespace Project01
                 SoccarGridView.DataSource = SoccarGames.ToList();
                 SoccarGridView.DataBind();
 
-                // query the Students Table using EF and LINQ
+                // query the games Table for the Hockey scores using EF and LINQ
                 var HockeyGames = (from allGames in db.Hockey_Scores
                                    where allGames.GameWeek == gameWeek
                                    select allGames);
@@ -93,7 +93,7 @@ namespace Project01
                 HockeyGridView.DataSource = HockeyGames.ToList();
                 HockeyGridView.DataBind();
 
-                // query the Students Table using EF and LINQ
+                // query the games Table for the lacrosse scores using EF and LINQ
                 var LaCrosseGames = (from allGames in db.lacrosse_Scores
                                    where allGames.GameWeek == gameWeek
                                    select allGames);
@@ -105,25 +105,6 @@ namespace Project01
 
 
             }
-
-           // GetDates();
-        }
-
-        /**
-         * <summary>
-         * This event handler deletes a student from the db using EF
-         * </summary>
-         * 
-         * @method StudentsGridView_RowDeleting
-         * @param {object} sender
-         * @param {GridViewDeleteEventArgs} e
-         * @returns {void}
-         */
-         
-        protected void GamesGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-
-
         }
 
         /**
@@ -148,7 +129,6 @@ namespace Project01
             Session["SortDirection"] = Session["SortDirection"].ToString() == "ASC" ? "DESC" : "ASC";
         }
 
-
         /**
         * <summary>
         * This event handler allows speficying which week to display games from
@@ -164,6 +144,16 @@ namespace Project01
             GetGames();
         }
 
+        /**
+        * <summary>
+        * This method is called when the delete button is pressed for a football game
+        * </summary>
+        * 
+        * @method FootballGridView_RowDeleting
+        * @param {object} sender
+        * @param {GridViewPageEventArgs} e
+        * @returns {void}
+        */
         protected void FootballGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
@@ -200,6 +190,16 @@ namespace Project01
             }
         }
 
+        /**
+        * <summary>
+        * This method is called when the delete button is pressed for a Soccer game
+        * </summary>
+        * 
+        * @method SoccarGridView_RowDeleting
+        * @param {object} sender
+        * @param {GridViewPageEventArgs} e
+        * @returns {void}
+        */
         protected void SoccarGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
@@ -236,6 +236,16 @@ namespace Project01
             }
         }
 
+        /**
+        * <summary>
+        * This method is called when the delete button is pressed for a Hockey game
+        * </summary>
+        * 
+        * @method HockeyGridView_RowDeleting
+        * @param {object} sender
+        * @param {GridViewPageEventArgs} e
+        * @returns {void}
+        */
         protected void HockeyGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
@@ -272,6 +282,16 @@ namespace Project01
             }
         }
 
+        /**
+        * <summary>
+        * This method is called when the delete button is pressed for a Lacrosse game
+        * </summary>
+        * 
+        * @method LacrosseGridView_RowDeleting
+        * @param {object} sender
+        * @param {GridViewPageEventArgs} e
+        * @returns {void}
+        */
         protected void LacrosseGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;

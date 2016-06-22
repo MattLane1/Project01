@@ -9,10 +9,7 @@
 
                 <h1>Users</h1>
 
-                <a href="/User/UserDetails.aspx" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Register New User</a>
-
                 <asp:GridView runat="server" ID="UsersGridView" AutoGenerateColumns="false"
-
                     CssClass="table table-bordered table-striped table-hover" OnRowDeleting="UsersGridView_RowDeleting" DataKeyNames="Id">
 
                     <Columns>
@@ -23,14 +20,11 @@
 
                         <asp:BoundField DataField="Email" HeaderText="Email" Visible="true" />
 
-                        <asp:HyperLinkField HeaderText="Edit" Text="<i class='fa fa-pencil-square-o fa-lg'></i> Edit" NavigateUrl="~/User/UserDetails.aspx" 
-
-                            DataNavigateUrlFields="Id" DataNavigateUrlFormatString="UserDetails.aspx?Id={0}" 
-
+                        <asp:HyperLinkField HeaderText="Edit" Text="<i class='fa fa-pencil-square-o fa-lg'></i> Edit" NavigateUrl="~/User/UserDetails.aspx"
+                            DataNavigateUrlFields="Id" DataNavigateUrlFormatString="UserDetails.aspx?Id={0}"
                             ControlStyle-CssClass="btn btn-primary btn-sm" />
 
-                        <asp:CommandField HeaderText="Delete" DeleteText="<i class='fa fa-trash-o fa-lg'></i> Delete" 
-
+                        <asp:CommandField HeaderText="Delete" DeleteText="<i class='fa fa-trash-o fa-lg'></i> Delete"
                             ShowDeleteButton="true" ButtonType="Link" ControlStyle-CssClass="btn btn-danger btn-sm" />
 
                     </Columns>
