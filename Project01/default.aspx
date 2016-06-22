@@ -45,7 +45,7 @@
                 </Columns>
             </asp:GridView>
 
-            <h4>Soccar Scores</h4>
+            <h4>Soccer Scores</h4>
             <asp:GridView runat="server" CssClass="table table-bordered table-striped table-hover" ID="SoccarGridView" DataKeyNames="GameID" OnRowDeleting="SoccarGridView_RowDeleting" AutoGenerateColumns="false">
                 <Columns>
                     <asp:BoundField runat="Server" DataField="GameId" HeaderText="Game ID" Visible="false" />

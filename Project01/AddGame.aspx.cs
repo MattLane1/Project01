@@ -120,7 +120,7 @@ namespace Project01
                 }
             }
 
-            //The user has selected to add a Soccar game
+            //The user has selected to add a Soccer game
             if (Sport.SelectedValue == "2")
             {
                 // Use EF to connect to the server
