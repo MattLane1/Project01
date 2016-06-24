@@ -16,12 +16,12 @@
                     <asp:ListItem Text="Week 2" Value="2" />
                     <asp:ListItem Text="Week 3" Value="3" />
                     <asp:ListItem Text="Week 4" Value="4" />
-                    <asp:ListItem Text="Week 5" Value="1" />
-                    <asp:ListItem Text="Week 6" Value="2" />
-                    <asp:ListItem Text="Week 7" Value="3" />
-                    <asp:ListItem Text="Week 8" Value="4" />
-                    <asp:ListItem Text="Week 9" Value="4" />
-                    <asp:ListItem Text="Week 10" Value="4" />
+                    <asp:ListItem Text="Week 5" Value="5" />
+                    <asp:ListItem Text="Week 6" Value="6" />
+                    <asp:ListItem Text="Week 7" Value="7" />
+                    <asp:ListItem Text="Week 8" Value="8" />
+                    <asp:ListItem Text="Week 9" Value="9" />
+                    <asp:ListItem Text="Week 10" Value="10" />
 
                 </asp:DropDownList>
             </div>
